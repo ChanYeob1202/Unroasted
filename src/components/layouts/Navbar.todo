@@ -1,0 +1,2 @@
+navbar todo
+- [ ] responsive navbar (화면이 줄어들었을때 나오는 버튼 하고 메뉴리스트 같은 컴포넌트로 통일하기)
