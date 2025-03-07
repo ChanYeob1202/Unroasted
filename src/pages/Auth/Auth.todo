@@ -1,0 +1,3 @@
+Todo: 
+- [o] : after sign in, (google or web logged in) figure out how to get the user's name = user.displayName
+- [o ] : after sign in, display the user's name in the top right corner
