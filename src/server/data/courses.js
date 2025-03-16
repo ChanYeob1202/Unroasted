@@ -29,6 +29,6 @@ const educationSeries = [
         description: "Learn professional coffee tasting techniques.",
         price: 0.99,
     }
-]
+];
 
-export default educationSeries;
+module.exports = educationSeries; 
