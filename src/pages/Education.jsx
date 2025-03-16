@@ -1,6 +1,5 @@
 import React from 'react'
 import educationSeries from '../data/educationSeries'
-import { Link } from 'react-router-dom'
 import PaymentButton from '../ui/PaymentButton'
 
 export default function Education() {
@@ -39,17 +38,9 @@ export default function Education() {
                         <h3 className="text-2xl font-light tracking-wide mb-4 group-hover:text-coffee transition-colors duration-300">
                           {series.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed font-light">
+                        <p className="text-gray-600 leading-relaxed font-light mb-6">
                           {series.description}
                         </p>
-                        <Link to={`/education/${series.id}`} className="block mb-6">
-                          <div className="mt-6 flex items-center text-coffee/60 group-hover:text-coffee transition-colors duration-300">
-                            <span className="text-sm tracking-wider">Explore Series</span>
-                            <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                          </div>
-                        </Link>
                     </div>
                     <div className="mt-6 flex justify-between items-center border-t pt-4">
                       <div className="text-md font-light text-coffee">

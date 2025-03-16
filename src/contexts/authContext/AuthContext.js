@@ -54,7 +54,6 @@ export const AuthProvider = ({children}) => {
         try {
             const provider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, provider);
-            
             // Check if user document exists, if not create one
             const userDoc = await getDoc(doc(db, "users", result.user.uid));
             if (!userDoc.exists()) {
@@ -65,7 +64,6 @@ export const AuthProvider = ({children}) => {
                     purchases: []
                 });
             }
-            
             return result;
         } catch (error) {
             console.error("Error in Google sign in:", error);
