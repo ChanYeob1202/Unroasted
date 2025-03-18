@@ -1,4 +1,4 @@
-const educationSeries = [
+const courses = [
     {
         id: "coffee-fundamentals",
         title: "Coffee Fundamentals",
@@ -31,4 +31,4 @@ const educationSeries = [
     }
 ];
 
-module.exports = educationSeries; 
+module.exports = courses; 

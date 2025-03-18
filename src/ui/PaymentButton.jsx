@@ -2,29 +2,35 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 export default function PaymentButton({ courseId, price, title, className }) {
-  
 const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+const [error, setError] = useState(null);
 
-  const handleClick = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      const { data } = await axios.post("/payment/create-checkout-session", {
+const handleClick = async() => {
+  try{
+    setLoading(true);
+    setError(null);
+    console.log("making request to /payment/create-checkout-session");
+  
+      const response = await axios.post("/payment/create-checkout-session", {
         courseId,
         price,
         title
       });
-      // Redirect to Stripe Checkout
-      window.location.href = data.url;
-    } catch (err) {
-      setError(err.response?.data?.error || 'Payment failed');
-      console.error('Payment error:', err);
+    
+      console.log("server response:", response.data); //debug log
+    
+      if(response.data.url){
+        window.location.href = response.data.url;
+      } else {
+        throw new Error("Invalid response from server");
+      }
+    } catch (error) {
+      console.error("Full error:", error); 
+      setError(error.response?.data?.error || error.message || "Payment initiation failed");
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className="relative">
@@ -40,7 +46,7 @@ const [loading, setLoading] = useState(false);
           transition-all
           duration-300
           ${className}
-        `}
+        `} 
       >
         {loading ? (
           <>
