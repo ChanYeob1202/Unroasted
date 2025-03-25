@@ -1,12 +1,8 @@
 require('dotenv').config();
 const express = require("express");
-const { db } = require('./config/firebase');
 const apiRoutes = require('./routes/api');
 const paymentRoutes = require("./routes/paymentRoutes");
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
-
-const courses = require("./data/courses");
 
 // Express Setup
 const app = express();
@@ -21,8 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Routes
-app.use('/api', apiRoutes); //for any url that starts with /api, use the apiRoutes
-app.use('/payment', paymentRoutes); //for any url that starts with /payment, use the paymentRoutes
+app.use('/api', apiRoutes); 
+//for any url that starts with /api, use the apiRoutes
+app.use('/payment', paymentRoutes); 
+//for any url that starts with /payment, use the paymentRoutes
 
 // Start server
 app.listen(PORT, () => {

@@ -110,8 +110,7 @@ export const AuthProvider = ({children}) => {
             throw error;
         }
     }
-
-      
+    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
