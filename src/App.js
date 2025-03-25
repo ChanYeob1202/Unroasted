@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import RoutLayout from "./components/layouts/RouteLayout";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import PublicRoutes from "./components/routes/PublicRoutes";
+import BulletinBoard from "./pages/BulletinBoard";
 
 // Page Imports
 import Home from "./pages/Home";
@@ -41,7 +42,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="blog" element={<Blog />} />
           <Route path="story" element={<Story />} />
-
+          <Route path="board" element={<BulletinBoard />} />
           {/* Auth Routes */}
           <Route path="signin" element={
             <PublicRoutes>
@@ -113,8 +114,6 @@ function App() {
               <Grades />
             </ProtectedRoutes>
           } />
-          
-
 
           {/* Blog Routes */}
           {BlogRoutes.map(({ path, element }) => (

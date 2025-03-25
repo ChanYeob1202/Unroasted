@@ -31,4 +31,6 @@ const courses = [
     }
 ];
 
+console.log('Loading courses:', courses);
+
 module.exports = courses; 

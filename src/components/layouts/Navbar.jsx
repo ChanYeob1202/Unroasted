@@ -33,7 +33,8 @@ export default function Navbar() {
     { link: "/", listName: "home" },
     { link: "/story", listName: "story" },
     { link: "/education", listName: "education" },
-    { link: "/Blog", listName: "blog" },
+    { link: "/blog", listName: "blog" },
+    { link: "/board", listName: "board" }
   ];
 
   return (
