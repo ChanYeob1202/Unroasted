@@ -19,7 +19,7 @@ module.exports = {
       fontWeight: {
         'amatic-regular': '400',
         'amatic-bold': '700',
-        'oswald-variable': '200 700', // This allows any weight between 200-700
+        'oswald-variable': '200 700', // This allows any weight between 200-700 
       },
       colors: {
         coffee: '#6F4E37',
@@ -30,5 +30,6 @@ module.exports = {
   },  
   plugins: [
     require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
   ],
 }
