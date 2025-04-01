@@ -1,22 +1,10 @@
 import React, { useState } from 'react';
+import blogPosts from '../data/blogPosts';
 import { FiSearch } from 'react-icons/fi';
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const blogPosts = [
-    {
-      id: 1,
-      link: "/blog_page/coffee-bean-encyclopedia",
-      src: "images/blog/coffee_bean.jpg",
-      title: "Coffee Bean Encyclopedia",
-      description: "Your essential guide to coffee beans: origins, varieties, and what makes each one special.",
-      readTime: "5 min read",
-      date: "April 15, 2024",
-      type: "Culture"
-    },
-    // ... existing blog posts
-  ];
 
   const filteredPosts = blogPosts.filter(post =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -28,9 +16,12 @@ export default function Blog() {
       {/* Minimal Hero */}
       <div className="pt-20 pb-12 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-5xl font-serif mb-4">Coffee Stories</h1>
+          <h1 className="text-5xl font-serif mb-4">Coffee Thoughts</h1>
           <p className="text-gray-600 text-lg">
-            Exploring home brewing, local cafes, and coffee culture
+            Sharing perspectives on coffee culture, brewing experiences, and café life
+          </p>
+          <p className="text-gray-500 text-base mt-2 italic">
+            Personal insights on what makes coffee special in our daily lives
           </p>
         </div>
       </div>
@@ -60,16 +51,13 @@ export default function Blog() {
             >
               <div className="aspect-[4/3] overflow-hidden mb-4">
                 <img 
-                  src={post.src} 
-                  alt={post.title} 
+                  src={post.src}
+                  alt={post.title}
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center text-sm text-gray-500 space-x-4">
-                  <span>{post.type}</span>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
                 </div>
                 <h2 className="text-xl font-serif group-hover:text-gray-600 transition-colors">
                   {post.title}

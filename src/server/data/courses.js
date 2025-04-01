@@ -3,7 +3,7 @@ const courses = [
         id: "coffee-fundamentals",
         title: "Coffee Fundamentals",
         description: "Learn the essentials of coffee, from bean to cup.",
-        price: 5.00,
+        price: 0.99,
     },
     {
         id: "pour-over-hand-drip-series",
@@ -21,7 +21,7 @@ const courses = [
         id: "espresso-series",
         title: "Espresso Series",
         description: "Everything you need to know about espresso brewing.",
-        price: 5.00,    
+        price: 0.99,    
     },
     {   
         id: "cupping-series",
@@ -31,6 +31,5 @@ const courses = [
     }
 ];
 
-console.log('Loading courses:', courses);
 
 module.exports = courses; 

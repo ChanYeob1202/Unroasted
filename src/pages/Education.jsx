@@ -1,5 +1,5 @@
 import React from 'react'
-import educationSeries from '../data/educationSeries'
+import courses from '../server/data/courses';
 import PaymentButton from '../ui/PaymentButton'
 
 export default function Education() {
@@ -22,9 +22,9 @@ export default function Education() {
       </div>
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {educationSeries.map((series) => (
+            {courses.map((course) => (
                 <div 
-                  key={series.id} 
+                  key={course.id} 
                   className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-10 
                     shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] 
                     hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.2)] 
@@ -36,20 +36,20 @@ export default function Education() {
                     <div className="absolute inset-0 bg-gradient-to-br from-coffee/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
                     <div className="flex-grow">
                         <h3 className="text-2xl font-light tracking-wide mb-4 group-hover:text-coffee transition-colors duration-300">
-                          {series.title}
+                          {course.title}
                         </h3>
                         <p className="text-gray-600 leading-relaxed font-light mb-6">
-                          {series.description}
+                          {course.description}
                         </p>
                     </div>
                     <div className="mt-6 flex justify-between items-center border-t pt-4">
                       <div className="text-md font-light text-coffee">
-                        ${series.price}
+                        ${course.price}
                       </div>
                       <PaymentButton 
-                        courseId={series.id}
-                        price={series.price}
-                        title={series.title}
+                        courseId={course.id}
+                        price={course.price}
+                        title={course.title}
                         className="px-6 py-2 bg-coffee text-white font-light text-sm rounded-lg hover:bg-coffee/90 transition-colors duration-300"
                       />
                     </div>

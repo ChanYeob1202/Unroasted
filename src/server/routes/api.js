@@ -7,4 +7,6 @@ router.get('/', (req, res) => {
     res.json({ message: 'API endpoint' });
 });
 
+
 module.exports = router; 
+

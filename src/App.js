@@ -4,6 +4,7 @@ import RoutLayout from "./components/layouts/RouteLayout";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import PublicRoutes from "./components/routes/PublicRoutes";
 import BulletinBoard from "./pages/BulletinBoard";
+import Specialty from "./pages/blog_posts/Specialty";
 
 // Page Imports
 import Home from "./pages/Home";
@@ -27,9 +28,9 @@ import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
 
 // Blog Routes
-import { BlogRoutes } from "./components/routes/BlogRoutes";
 import TestDatabase from './components/TestDatabase';
-
+import BoardFormPage from "./pages/BoardFormPage";
+import CreamTop from "./pages/blog_posts/CreamTop";
 function App() {
   return (
     <>
@@ -43,6 +44,10 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="story" element={<Story />} />
           <Route path="board" element={<BulletinBoard />} />
+
+          {/* Board Form Page */}
+          <Route path="board/:id" element= {<BoardFormPage />} />
+
           {/* Auth Routes */}
           <Route path="signin" element={
             <PublicRoutes>
@@ -55,7 +60,12 @@ function App() {
             </PublicRoutes>
           } />
 
-          {/* Protected Routes */}
+          <Route path="education" element={
+            <ProtectedRoutes>
+              <Education />
+            </ProtectedRoutes>
+          } />
+
           <Route path="education/:id" element={<Education />} />
           <Route path="cart" element={
             <ProtectedRoutes>
@@ -63,12 +73,6 @@ function App() {
             </ProtectedRoutes>
           } />
 
-          {/* education routes */}
-          <Route path="/education" element={
-            <ProtectedRoutes>
-              <Education />
-            </ProtectedRoutes>
-          } />
           <Route path="/education/coffee-fundamentals" element={
             <ProtectedRoutes>
               <Fundamentals />
@@ -116,9 +120,11 @@ function App() {
           } />
 
           {/* Blog Routes */}
-          {BlogRoutes.map(({ path, element }) => (
+          <Route path ="/blog/traditional-vs-modern-coffee" element={<CreamTop />} />
+          <Route path ="/blog/what-makes-coffee-specialty" element={<Specialty />} />
+          {/* {BlogRoutes.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
-          ))}
+          ))} */}
         </Route>
       </Routes>
       <TestDatabase />  
