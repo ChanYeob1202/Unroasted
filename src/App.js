@@ -32,7 +32,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="blog" element={<Blog />} />
+      
+          <Route path="blog" element={
+            <ProtectedRoutes>
+              <Blog />
+            </ProtectedRoutes>
+          } />
           <Route path="story" element={<Story />} />
           <Route path="board" element={<BulletinBoard />} />
 
@@ -47,14 +52,21 @@ function App() {
           } />
           <Route path="signup" element={
             <PublicRoutes>
-              <SignUpPage />
+              <SignUpPage />g
             </PublicRoutes>
           } />
 
           {/* Blog Routes */}
-          <Route path ="/blog/traditional-vs-modern-coffee" element={<CreamTop />} />
-          <Route path ="/blog/what-makes-coffee-specialty" element={<Specialty />} />
-      
+          <Route path ="/blog/traditional-vs-modern-coffee" element={
+            <ProtectedRoutes>
+              <CreamTop />
+            </ProtectedRoutes>
+          } />
+          <Route path ="/blog/what-makes-coffee-specialty" element={
+            <ProtectedRoutes>
+              <Specialty />
+            </ProtectedRoutes>
+          } />
         </Route>
       </Routes>
       <TestDatabase />  
