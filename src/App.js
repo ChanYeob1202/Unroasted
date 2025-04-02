@@ -31,6 +31,8 @@ import SignUpPage from './pages/Auth/SignUpPage';
 import TestDatabase from './components/TestDatabase';
 import BoardFormPage from "./pages/BoardFormPage";
 import CreamTop from "./pages/blog_posts/CreamTop";
+
+
 function App() {
   return (
     <>

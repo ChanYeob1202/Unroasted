@@ -22,12 +22,5 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// Add test connection
-db.collection('test').add({
-  test: true,
-  timestamp: new Date()
-})
-.then(() => console.log('✅ Firebase connection test successful'))
-.catch(error => console.error('❌ Firebase connection failed:', error));
 
 module.exports = { admin, db }; 
