@@ -32,7 +32,6 @@ export default function Navbar() {
   const navItems = [
     { link: "/", listName: "home" },
     { link: "/story", listName: "story" },
-    { link: "/education", listName: "education" },
     { link: "/blog", listName: "blog" },
     { link: "/board", listName: "board" }
   ];
