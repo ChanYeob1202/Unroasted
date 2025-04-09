@@ -5,7 +5,6 @@ import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import PublicRoutes from "./components/routes/PublicRoutes";
 import BulletinBoard from "./pages/BulletinBoard";
 import Specialty from "./pages/blog_posts/Specialty";
-
 // Page Imports
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -17,7 +16,6 @@ import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
 
 // Blog Routes
-import TestDatabase from './components/TestDatabase';
 import BoardFormPage from "./pages/BoardFormPage";
 import CreamTop from "./pages/blog_posts/CreamTop";
 
@@ -52,24 +50,24 @@ function App() {
           } />
           <Route path="signup" element={
             <PublicRoutes>
-              <SignUpPage />g
+              <SignUpPage />
             </PublicRoutes>
           } />
 
           {/* Blog Routes */}
-          <Route path ="/blog/traditional-vs-modern-coffee" element={
+          <Route path ="/blog/cream-top-post" element={
             <ProtectedRoutes>
               <CreamTop />
             </ProtectedRoutes>
           } />
-          <Route path ="/blog/what-makes-coffee-specialty" element={
+          <Route path ="/blog/specialty-coffee-guide" element={
             <ProtectedRoutes>
               <Specialty />
             </ProtectedRoutes>
           } />
         </Route>
       </Routes>
-      <TestDatabase />  
+    
     </>
   );
 }

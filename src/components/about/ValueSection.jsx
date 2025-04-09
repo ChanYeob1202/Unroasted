@@ -10,7 +10,7 @@ export default function ValueSection() {
       title: 'Community',
       shortDesc: 'Uniting coffee lovers',
       longDesc: 'Connecting coffee enthusiasts across borders through shared passion. We create spaces for meaningful discussions and relationships to flourish.',
-      highlights: ['Global meetups', 'Knowledge sharing', 'Collaborative events', 'Mentorship programs']
+      highlights: ['Online discussions', 'Knowledge sharing', 'Community support', 'Brewing tips']
     },
     {
       title: 'Education',

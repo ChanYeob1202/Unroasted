@@ -1,26 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaInstagram, FaLinkedinIn, FaGithub, FaMedium, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
-import { motion } from 'framer-motion';
+import { FaInstagram, FaLinkedinIn, FaGithub, FaMedium } from "react-icons/fa";
 import Logo from '../../ui/Logo';
-import NewsletterForm from '../forms/NewsletterForm';
 
 export default function Footer() {
-  const footerLinks = {
-    explore: [
-      { name: 'My Story', path: '/about' },
-      { name: 'Developer Site', path: 'https://your-dev-portfolio-url.com' },
-      { name: 'Blog', path: '/blog' },
-      { name: 'Careers', path: '/careers' }
-    ],
-    learn: [
-      { name: 'Coffee Guide', path: '/guide' },
-      { name: 'Brewing Tips', path: '/tips' },
-      { name: 'Coffee Quiz', path: '/quiz' },
-      { name: 'FAQ', path: '/faq' }
-    ]
-  };
-
   const socialLinks = [
     { 
       icon: <FaInstagram className="text-xl" />, 
@@ -44,126 +27,94 @@ export default function Footer() {
     }
   ];
 
-  const contactInfo = [
-    {
-      icon: <FaPhone className="text-lg" />,
-      text: '213-589-9504',
-      href: 'tel:213-589-9504'
-    },
-    {
-      icon: <FaEnvelope className="text-lg" />,
-      text: 'michaelcodescoffee@gmail.com',
-      href: 'mailto:michaelcodescoffee@gmail.com'
-    },
-    {
-      icon: <FaMapMarkerAlt className="text-lg" />,
-      text: 'Los Angeles, CA',
-      href: 'https://goo.gl/maps/your-location'
-    }
-  ];
-
   return (
-    <footer className="w-full bg-stone-100 pt-16 pb-8">
+    <footer className="w-full bg-white py-16">
       <div className="container mx-auto max-w-7xl px-4">
-        {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand Section */}
-          <div className="space-y-6">
-            <Logo />
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold">unroasted</h2>
             <p className="text-gray-600 text-sm leading-relaxed">
               Exploring the world of coffee, one cup at a time. Join our community of coffee enthusiasts.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-gray-600 hover:text-coffee transition-colors p-2 hover:bg-white rounded-full"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="text-gray-600 hover:text-coffee transition-colors"
                 >
                   {social.icon}
-                </motion.a>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Links Sections */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3 className="text-sm font-bold uppercase mb-4 text-gray-900">
-                {category}
-              </h3>
-              <ul className="space-y-3">
-                {links.map((link, index) => (
-                  <motion.li
-                    key={index}
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <Link
-                      to={link.path}
-                      className="text-gray-600 hover:text-coffee transition-colors text-sm inline-flex items-center"
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Explore Section */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">EXPLORE</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/about" className="text-gray-600 hover:text-coffee">
+                  My Story
+                </Link>
+              </li>
+              <li>
+                <Link to="/developer" className="text-gray-600 hover:text-coffee">
+                  Developer Site
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-gray-600 hover:text-coffee">
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           {/* Newsletter Section */}
           <div>
-            <h3 className="text-sm font-bold uppercase mb-4 text-gray-900">
-              Stay Connected
-            </h3>
-            <p className="text-gray-600 text-sm mb-4">
+            <h3 className="text-xl font-bold mb-4">STAY CONNECTED</h3>
+            <p className="text-gray-600 mb-4">
               Join our newsletter for exclusive coffee tips and updates.
             </p>
-            <NewsletterForm />
+            <div className="space-y-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <button className="w-full bg-coffee-dark text-white py-2 rounded hover:bg-coffee-dark/90 transition-colors">
+                Subscribe
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Contact Info */}
-        <div className="border-t border-gray-200 pt-8 pb-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {contactInfo.map((info, index) => (
-              <motion.a
-                key={index}
-                href={info.href}
-                className="flex items-center justify-center md:justify-start gap-2 text-gray-600 hover:text-coffee transition-colors"
-                whileHover={{ scale: 1.02 }}
-              >
-                {info.icon}
-                <span className="text-sm">{info.text}</span>
-              </motion.a>
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 text-gray-600">
+          <a href="tel:213-589-9504" className="hover:text-coffee">
+            213-589-9504
+          </a>
+          <a href="mailto:michaelcodescoffee@gmail.com" className="hover:text-coffee md:text-center">
+            michaelcodescoffee@gmail.com
+          </a>
+          <div className="md:text-right">
+            Los Angeles, CA
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-200 pt-8 mt-4">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-600 text-sm">
-              © {new Date().getFullYear()} Michael Codes Coffee. All rights reserved.
-            </p>
-            
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-400 text-sm">Made with</span>
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="text-red-500"
-              >
-                ❤️
-              </motion.span>
-              <span className="text-gray-400 text-sm">in Los Angeles</span>
-            </div>
-          </div>
+        {/* Copyright */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-gray-200">
+          <p className="text-gray-600 text-sm">
+            © 2025 Michael Codes Coffee. All rights reserved.
+          </p>
+          <p className="text-gray-600 text-sm flex items-center gap-2">
+            Made with <span className="text-red-500">❤️</span> in Los Angeles
+          </p>
         </div>
       </div>
     </footer>
