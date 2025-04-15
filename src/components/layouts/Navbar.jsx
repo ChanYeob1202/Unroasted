@@ -8,7 +8,7 @@ import { CiViewList } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 
 export default function Navbar() {
-  const { user, logOut } = useAuth();
+  const { currentUser, logOut, isAdmin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +33,13 @@ export default function Navbar() {
     { link: "/", listName: "home" },
     { link: "/story", listName: "story" },
     { link: "/blog", listName: "blog" },
-    { link: "/board", listName: "board" }
+    { link: "/board", listName: "board" },
+    // This spread operator (...) takes an array and spreads its items into the parent array
+    // The ternary operator (?) checks if isAdmin is true
+    // If isAdmin is true, it adds the dashboard link to the array
+    // If isAdmin is false (after :), it adds an empty array []
+    // So the dashboard link only appears for admin users
+    ...(isAdmin ? [{ link: "/dashBoard", listName: "dash board"}] : [])
   ];
 
   return (
@@ -58,7 +64,7 @@ export default function Navbar() {
               className="text-sm font-medium hover:text-[#9e7d79] transition-colors"
             />
           ))}
-          {user ? (
+          {currentUser ? (
             <button 
               className="text-sm font-medium hover:text-[#9e7d79] transition-colors"
               onClick={logOut}
@@ -99,7 +105,7 @@ export default function Navbar() {
                   className="block text-lg font-medium hover:text-[#9e7d79] transition-colors py-2"
                 />
               ))}
-              {user ? (
+              {currentUser ? (
                 <button 
                   className="w-full text-left text-lg font-medium hover:text-[#9e7d79] transition-colors py-2"
                   onClick={logOut}
