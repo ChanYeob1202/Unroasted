@@ -8,9 +8,9 @@ import { useAuth } from '../../hooks/useAuth';
 */
 
 export default function ProtectedRoutes({ children }) {
-    const { user } = useAuth();
+    const { currentUser } = useAuth();
 
-    if (!user) {
+    if (!currentUser) {
         alert('Please sign in first to access this page');
         return <Navigate to="/signin" />;
     }

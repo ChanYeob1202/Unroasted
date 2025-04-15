@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import RoutLayout from "./components/layouts/RouteLayout";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
+import AdminRoute from "./components/routes/AdminRoute";
 import PublicRoutes from "./components/routes/PublicRoutes";
 import BulletinBoard from "./pages/BulletinBoard";
 import Specialty from "./pages/blog_posts/Specialty";
@@ -10,6 +11,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Story from "./pages/Story";
+import DashBoard from "./pages/DashBoard"
 
 // Auth Pages
 import SignInPage from './pages/Auth/SignInPage';
@@ -30,17 +32,23 @@ function App() {
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="about" element={<About />} />
-      
           <Route path="blog" element={
             <ProtectedRoutes>
               <Blog />
             </ProtectedRoutes>
-          } />
+          }/>
           <Route path="story" element={<Story />} />
           <Route path="board" element={<BulletinBoard />} />
 
           {/* Board Form Page */}
           <Route path="board/:id" element= {<BoardFormPage />} />
+
+          {/* admin route */}
+          <Route path = "dashboard" element = {
+            <AdminRoute>
+              <DashBoard />
+            </AdminRoute>
+          } />
 
           {/* Auth Routes */}
           <Route path="signin" element={
