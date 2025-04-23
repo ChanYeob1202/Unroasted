@@ -31,7 +31,7 @@ export default function InputForm({
     >
       <h2 className="text-2xl font-bold text-center mb-8 text-coffee">{title}</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Username field for signup */}
+        {/* Username field will show when isSignIn is false */}
         {!isSignIn && (
           <div>
             <label 
@@ -49,7 +49,7 @@ export default function InputForm({
                 type="text"
                 name="username"
                 id="username"
-                value={user.username || ''}
+                value={user.username}
                 onChange={handleChange}
                 className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 
                          focus:border-coffee focus:outline-none focus:ring-1 focus:ring-coffee/50

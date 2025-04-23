@@ -1,0 +1,27 @@
+- [ ]  **Basic table structure first**
+    - [ ]  Create the table component with static data
+    - [ ]  Implement the column headers and row structure
+    - [ ]  Style the basic table layout
+
+- [ ]  **Add Data fetching**
+    - [ ]  Connect to firebase data source
+    - [ ]  Display real data in the table
+
+- [ ]  **Implement Pagination**
+    - [ ]  Add the Pagination controls
+    - [ ]  Implement the logic to slice data by page
+    - [ ]  Make sure navigation between pages work
+
+- [ ]  **Add Search Functionality**
+    - [ ]  Create the search Input
+    - [ ]  Implement filtering logic
+    - [ ]  Connect the search to both the table and pagination
+    
+- [ ]  **Additional Feature**
+    - [ ]  Status toggles (Active/Deactivate)
+    - [ ]  Action Menus
+    - [ ]  Sorting
+    - [ ]  Row Selection
+
+
+- [ ] ** once complete all, change Protected Routes for only verified users 

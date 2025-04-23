@@ -6,8 +6,8 @@ body {
   background-color: white;
   color: black;
   /* background-color: rgb(241, 241, 241); */
-
 }
+
 
 
 
@@ -22,3 +22,10 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .table-header {
+    @apply 
+  }
+}

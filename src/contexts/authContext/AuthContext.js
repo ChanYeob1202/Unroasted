@@ -52,7 +52,8 @@ export const AuthProvider = ({children}) => {
                 createdAt: new Date(),
                 authProvider: 'email',
                 role: 'user',
-                purchases: []
+                purchases: [],
+                verified: "false"
             });
     
             return userCredential;
@@ -111,7 +112,7 @@ export const AuthProvider = ({children}) => {
                     createdAt: new Date(),
                     authProvider: 'google',
                     role: 'user',
-                    purchases: []
+                    isVerified: "false"
                 });
             }
             

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import StorySection from '../components/about/StorySection'
+import AboutStorySection from '../components/about/AboutStorySection'
 import JoinSection from '../components/about/JoinSection'
 import ValueSection from '../components/about/ValueSection'
 
@@ -184,7 +184,7 @@ export default function About() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4">
-        <StorySection />
+        <AboutStorySection />
         <FeatureShowcase />
         <VisionSection />
         <ValueSection />

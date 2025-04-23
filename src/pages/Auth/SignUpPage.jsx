@@ -4,7 +4,6 @@ import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import InputForm from '../../components/forms/InputForm';
 
-
 export default function SignUpPage() {
   const [user, setUser] = useState({
     email: "",
@@ -19,6 +18,12 @@ export default function SignUpPage() {
 
   const handleSubmit = async (event, user) => {
     event.preventDefault();
+    
+    if (!user.username.trim()) {
+      toast.error('Username is required');
+      return;
+    }
+
     try {
       setIsLoading(true);
       await signUp(user.email, user.password, user.username);
@@ -75,18 +80,17 @@ export default function SignUpPage() {
     });
   };
 
-  
-
   return (
     <div className='min-h-screen sm:x-[100vw] flex flex-col items-center justify-center -mt-[200px]'>
       <InputForm 
         user={user}
-        handleUsernameChange={handleChange}
         handleChange={handleChange}
         handleSubmit={(e) => handleSubmit(e, user)}
         isLoading={isLoading}
         error={error}
         buttonText={isLoading ? "Signing up..." : "Sign up"}
+        title="Create Account"
+        isSignIn={false}
       />
     </div>
   );

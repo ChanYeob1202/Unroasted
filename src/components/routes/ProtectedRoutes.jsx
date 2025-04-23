@@ -1,14 +1,12 @@
+import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
-/* 
-    protecting routes for non registered users
-    key features : navigate, 
-    return user ? <  >
-*/
-
 export default function ProtectedRoutes({ children }) {
+
+
     const { currentUser } = useAuth();
+    console.log(currentUser?.uid);
 
     if (!currentUser) {
         alert('Please sign in first to access this page');
