@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import RoutLayout from "./components/layouts/RouteLayout";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
-import AdminRoute from "./components/routes/AdminRoute";
+import AdminRoute from './components/routes/AdminRoute'
 import PublicRoutes from "./components/routes/PublicRoutes";
 import BulletinBoard from "./pages/BulletinBoard";
 import Specialty from "./pages/blog_posts/Specialty";
@@ -12,13 +12,10 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Story from "./pages/Story";
 import DashBoard from "./pages/DashBoard"
-
 // Auth Pages
 import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
-
 // Blog Routes
-import BoardFormPage from "./pages/BoardFormPage";
 import CreamTop from "./pages/blog_posts/CreamTop";
 
 
@@ -36,12 +33,11 @@ function App() {
             <ProtectedRoutes>
               <Blog />
             </ProtectedRoutes>
-          }/>
+          } />
           <Route path="story" element={<Story />} />
           <Route path="board" element={<BulletinBoard />} />
 
           {/* Board Form Page */}
-          <Route path="board/:id" element= {<BoardFormPage />} />
 
           {/* admin route */}
           <Route path = "dashboard" element = {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useFetchData } from '../hooks/useFetchData';
-import { motion, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import BlogHero from '../components/blog/BlogHero';
 import BlogSearch from '../components/blog/BlogSearch';
 import BlogGrid from '../components/blog/BlogGrid';
@@ -10,18 +10,14 @@ export default function Blog() {
   const { data: posts, loading, error } = useFetchData('posts');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
-  const { scrollYProgress } = useScroll(); 
-
 
   //Set because it removes duplicated category
   const postCategories = ['all', ...new Set(posts.flatMap(post => post.primaryCategory))];
-
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase());
-    
+
     const matchesFilter = selectedFilter === 'all' || post.primaryCategory === selectedFilter;
-    
     return matchesSearch && matchesFilter;
   });
 
@@ -35,7 +31,7 @@ export default function Blog() {
         animate = {{opacity: 1, y:0}}
         transition = {{duration: 0.8, ease: "easeOut"}}
       >
-      <BlogHero />
+       <BlogHero />
       </motion.div>
       <div className="max-w-6xl mx-auto px-4">
         <BlogSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />

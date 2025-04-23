@@ -2,7 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import AnimatedSection from '../animation/AnimatedSection'
 
-export default function StorySection() {
+export default function AboutStorySection() {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (

@@ -1,45 +1,47 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom';
-import FilterTabs from '../ui/FilterTabs';
+import FilterTabs from '../ui/FilterTabs'
+import User from '../components/dashboard/user/User';
+import Post from '../components/dashboard/posts/Post';
+import { useFetchData } from '../hooks/useFetchData';
 
 export default function DashBoard() {
-  const location = useLocation();
-  const [selectedView, setSelectedView] = useState('overview')
+  const [viewState, setViewState] = useState("users");
+  
+  // Only fetch the active view's data
+  const { 
+    data: users, 
+    loading: userLoading, 
+    error: userError 
+  } = useFetchData(viewState === "users" ? "users" : ""); 
 
-  const dashboardViews = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'analytics', label: 'Analytics' },
-    { id: 'users', label: 'Users' }
-  ]
+  const { 
+    data: posts, 
+    loading: postLoading, 
+    error: postError 
+  } = useFetchData(viewState === "posts" ? "posts" : ""); 
+  
+  const dashboard_lists = [
+    { id: "users", label: "Users" },
+    { id: "posts", label: "Posts" }
+  ];
 
   const renderContent = () => {
-    switch(selectedView) {
-      case 'overview':
+    switch(viewState) {
+      case "users":
         return (
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-lg font-medium mb-4">Quick Stats</h2>
-              <p className="text-gray-600">Current path: {location.pathname}</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-lg font-medium mb-4">Recent Activity</h2>
-              {/* Add your overview content here */}
-            </div>
-          </div>
+          <User  
+            users={users}
+            loading={userLoading}
+            error={userError}
+          />
         );
-      case 'analytics':
+      case "posts":
         return (
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-medium mb-4">Analytics Dashboard</h2>
-            {/* Add your analytics content here */}
-          </div>
-        );
-      case 'users':
-        return (
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-lg font-medium mb-4">User Management</h2>
-            {/* Add your user management content here */}
-          </div>
+          <Post 
+            posts={posts}
+            loading={postLoading}
+            error={postError}
+          />
         );
       default:
         return null;
@@ -47,18 +49,16 @@ export default function DashBoard() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <h1 className="text-2xl text-center font-serif font-semibold mb-10">Dashboard</h1>
-        
+    <div className="min-h-screen p-6">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-2xl font-semibold font-serif mb-20 text-center">Dashboard</h1>
         <FilterTabs
-          items={dashboardViews} 
-          selectedItem={selectedView}
-          onItemSelect={(item) => setSelectedView(item.id)}
+          items={dashboard_lists}
+          selectedItem={viewState}
+          onItemSelect={(item) => setViewState(item.id)}
           variant="underline"
         />
-
-        <div className="pb-20">
+        <div className="mt-6">
           {renderContent()}
         </div>
       </div>

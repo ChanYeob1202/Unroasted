@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../lib/firebase/firebase';
+import { db } from '../../lib/firebase/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import LikeButton from '../ui/LikeButton';
+import LikeButton from '../../ui/LikeButton'
 
 export default function BlogPost({ postId }) {
   const [post, setPost] = useState(null);

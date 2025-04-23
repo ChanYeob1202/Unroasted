@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { db } from "../lib/firebase/firebase"
-import {getDocs, collection, doc, updateDoc} from 'firebase/firestore'
+import { collection, onSnapshot } from 'firebase/firestore'
 
 export const useFetchData = (collectionName) => {
     const [ data, setData ] = useState([]);
@@ -8,24 +8,36 @@ export const useFetchData = (collectionName) => {
     const [ error, setError ] = useState(null); 
 
     useEffect(() => {
-        const fetchData = async() => {
-            try {
-                const dataRef = collection(db, collectionName);
-                const snapShot = await getDocs(dataRef); 
-                const fetchedData = snapShot.docs.map(doc => ({
+        // If no collection name is provided, return empty data
+        if (!collectionName) {
+            setData([]);
+            setLoading(false);
+            return;
+        }
+
+        // Create reference to the collection
+        const dataRef = collection(db , collectionName);
+        
+        // Set up real-time listener
+        const unsubscribe = onSnapshot(dataRef, 
+            (snapshot) => {
+                const fetchedData = snapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
                 }));
                 setData(fetchedData);
-                } catch (error){
-                    setError(error.message);
-                    console.error("Error fetching data: ", error);
-              } finally {
                 setLoading(false);
-              }
-            };
-            fetchData();
-        }, [collectionName]);
-        
-        return { data, loading, error };
-    }
+            },
+            (error) => {
+                setError(error.message);
+                console.error("Error fetching data: ", error);
+                setLoading(false);
+            }
+        );
+
+        // Cleanup subscription
+        return () => unsubscribe();
+    }, [collectionName]);
+    
+    return { data, loading, error };
+}
