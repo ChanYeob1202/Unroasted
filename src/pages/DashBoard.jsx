@@ -30,18 +30,19 @@ export default function DashBoard() {
       case "users":
         return (
           <User  
-            users={users}
-            loading={userLoading}
-            error={userError}
+            users={ users }
+            loading={ userLoading }
+            error={ userError }
           />
         );
+
       case "posts":
         return (
           <Post 
-            posts={posts}
-            loading={postLoading}
-            error={postError}
-          />
+            posts = { posts }
+            loading = { postLoading }
+            error = { postError }
+           />
         );
       default:
         return null;
@@ -65,11 +66,3 @@ export default function DashBoard() {
     </div>
   );
 }
-
-
-
-
-
-
-
-

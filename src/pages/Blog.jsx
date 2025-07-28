@@ -13,6 +13,7 @@ export default function Blog() {
 
   //Set because it removes duplicated category
   const postCategories = ['all', ...new Set(posts.flatMap(post => post.primaryCategory))];
+  
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase());

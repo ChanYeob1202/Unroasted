@@ -28,7 +28,7 @@ export default function SignUpPage() {
       setIsLoading(true);
       await signUp(user.email, user.password, user.username);
       toast.success('Successfully signed up!');
-      navigate("/signin");
+      navigate("/");
     } catch (error) {
       setError(error.message);
       switch(error.code) {

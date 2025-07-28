@@ -33,7 +33,7 @@ export default function Navbar() {
     { link: "/", listName: "home" },
     { link: "/story", listName: "story" },
     { link: "/blog", listName: "blog" },
-    { link: "/board", listName: "board" },
+    { link: "/community", listName: "community" },
     // This spread operator (...) takes an array and spreads its items into the parent array
     // The ternary operator (?) checks if isAdmin is true
     // If isAdmin is true, it adds the dashboard link to the array

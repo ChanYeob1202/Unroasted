@@ -11,13 +11,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Story from "./pages/Story";
-import DashBoard from "./pages/DashBoard"
+import DashBoard from "./pages/DashBoard";
 // Auth Pages
 import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
 // Blog Routes
 import CreamTop from "./pages/blog_posts/CreamTop";
-
 
 function App() {
   return (
@@ -35,10 +34,9 @@ function App() {
             </ProtectedRoutes>
           } />
           <Route path="story" element={<Story />} />
-          <Route path="board" element={<BulletinBoard />} />
-
+          <Route path="community" element={<BulletinBoard />} />
           {/* Board Form Page */}
-
+        
           {/* admin route */}
           <Route path = "dashboard" element = {
             <AdminRoute>
@@ -52,6 +50,7 @@ function App() {
               <SignInPage />
             </PublicRoutes>
           } />
+
           <Route path="signup" element={
             <PublicRoutes>
               <SignUpPage />
@@ -64,6 +63,7 @@ function App() {
               <CreamTop />
             </ProtectedRoutes>
           } />
+
           <Route path ="/blog/specialty-coffee-guide" element={
             <ProtectedRoutes>
               <Specialty />
@@ -71,7 +71,6 @@ function App() {
           } />
         </Route>
       </Routes>
-    
     </>
   );
 }

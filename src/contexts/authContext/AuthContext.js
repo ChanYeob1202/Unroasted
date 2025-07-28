@@ -8,9 +8,10 @@ import {
     onAuthStateChanged, 
     signInWithPopup, 
     sendPasswordResetEmail,
-    updateProfile
+    updateProfile,
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
+
 
 export const AuthContext = createContext();
 
@@ -29,7 +30,7 @@ export const AuthProvider = ({children}) => {
             } else {
                 setCurrentUser(null);
                 setIsAdmin(false);
-            }
+            }      
             setLoading(false);
         });
         return unsubscribe;

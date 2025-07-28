@@ -53,7 +53,7 @@ export default function Story() {
         >
           <StoryIntro />
           <JourneyTimeline />
-          <SkillsShowcase />
+          {/* <SkillsShowcase /> */}
           <PhotoGallery />
         </motion.div>
       </div>
