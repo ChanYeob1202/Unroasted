@@ -5,9 +5,9 @@ import { motion } from 'framer-motion'
 export default function JourneyTimeline() {
     const events = [
         { year: '2019', title: 'First Steps', description: 'Started at Coffee Coffee in Larchmont Village' },
-        { year: '2020', title: 'Specialty Coffee', description: 'Joined 6xs Coffee, diving deep into specialty coffee' },
-        { year: '2021', title: 'Advanced Training', description: 'Mastered various brewing methods and coffee origins' },
-        { year: '2023', title: 'Digital Journey', description: 'Created this platform combining tech and coffee' }
+        { year: '2022', title: 'Specialty Coffee', description: 'Joined 6xs Coffee, diving deep into specialty coffee' },
+        { year: '2024', title: 'Digital Journey', description: 'Building this platform combining tech and coffee' },
+        { year: '2025', title: 'Management & Consulting', description: 'Managing and consulting at One:Escape Coffee' }
       ];
     
       return (

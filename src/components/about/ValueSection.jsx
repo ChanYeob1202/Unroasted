@@ -14,9 +14,9 @@ export default function ValueSection() {
     },
     {
       title: 'Education',
-      shortDesc: 'Empowering knowledge',
-      longDesc: 'Democratizing coffee knowledge and making specialty coffee accessible to everyone through comprehensive learning resources.',
-      highlights: ['Interactive courses', 'Expert workshops', 'Brewing guides', 'Origin deep-dives']
+      shortDesc: 'Sharing coffee knowledge',
+      longDesc: 'Sharing in-depth coffee knowledge through carefully crafted articles, guides, and insights to help everyone discover and appreciate the world of specialty coffee.',
+      highlights: ['Coffee articles', 'Brewing guides', 'Origin stories', 'Coffee science']
     },
     {
       title: 'Innovation',

@@ -1,8 +1,14 @@
 import React from 'react'
 import AnimatedSection from '../animation/AnimatedSection'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 export default function JoinSection() {
+  const navigate = useNavigate()
+  const handleClick =()=> {
+      navigate("/signin")
+  }
+
   return (
     <AnimatedSection>
       <div className="w-full flex flex-col md:flex-row my-20 justify-center items-center gap-16 px-8 md:px-20">
@@ -42,6 +48,7 @@ export default function JoinSection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             className="mt-8 px-8 py-3 bg-coffee text-white rounded-lg shadow-lg hover:bg-coffee/90 transition-all"
+            onClick = {handleClick}
           >
             Join Now
           </motion.button>

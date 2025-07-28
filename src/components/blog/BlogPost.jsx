@@ -64,7 +64,7 @@ export default function BlogPost({ postId }) {
             </div>
             <LikeButton postId={postId} initialLikes={post.likes} />
           </div>
-          <img 
+          <img
             src={post.imageUrl}
             alt={post.title} 
             className="w-full h-auto rounded-lg mb-8"
@@ -83,7 +83,6 @@ export default function BlogPost({ postId }) {
               <h2 className="text-3xl font-serif text-coffee mb-6">
                 {section.title}
               </h2>
-              
               {section.content && (
                 <p className="mb-4">{section.content}</p>
               )}
@@ -93,11 +92,9 @@ export default function BlogPost({ postId }) {
                   <h3 className="text-2xl font-serif text-coffee-dark mb-4">
                     {subsection.title}
                   </h3>
-                  
                   {subsection.content && (
                     <p className="mb-2">{subsection.content}</p>
                   )}
-                  
                   {subsection.bulletPoints && (
                     <ul className="list-disc pl-6 mb-6 space-y-2">
                       {subsection.bulletPoints.map((point, pointIndex) => (
