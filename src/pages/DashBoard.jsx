@@ -12,7 +12,8 @@ export default function DashBoard() {
     data: users, 
     loading: userLoading, 
     error: userError 
-  } = useFetchData(viewState === "users" ? "users" : ""); 
+  } = useFetchData(viewState === "users" ? "users" : "");
+  
 
   const { 
     data: posts, 
