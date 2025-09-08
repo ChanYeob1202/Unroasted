@@ -58,8 +58,8 @@ function App() {
 
           {/* Blog Routes */}
           <Route path="blog/*" element={<BlogRoutes />} />
-        
-         
+          
+           
         </Route>
       </Routes>
     </>

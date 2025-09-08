@@ -23,7 +23,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
@@ -34,11 +33,6 @@ export default function Navbar() {
     { link: "/story", listName: "story" },
     { link: "/blog", listName: "blog" },
     { link: "/community", listName: "community" },
-    // This spread operator (...) takes an array and spreads its items into the parent array
-    // The ternary operator (?) checks if isAdmin is true
-    // If isAdmin is true, it adds the dashboard link to the array
-    // If isAdmin is false (after :), it adds an empty array []
-    // So the dashboard link only appears for admin users
     ...(isAdmin ? [{ link: "/dashBoard", listName: "dash board"}] : [])
   ];
 

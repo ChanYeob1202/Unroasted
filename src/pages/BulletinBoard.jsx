@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import { FaRegCommentDots } from "react-icons/fa6";
 {/* <FaRegCommentDots /> */}
 
-
-
 export default function BulletinBoard() {
   /* 
     1. Title
@@ -51,7 +49,7 @@ export default function BulletinBoard() {
         {articles.map((article) => (
           <Link
             key={ article.id }
-            to={`/board/${article.id}`}  
+            to={`/board/${article.id}`}
             className='grid grid-cols-12 gap-4 px-4 py-4 border-b items-center hover:bg-gray-50 transition'
           >
             <div className="col-span-7 truncate font-medium text-gray-900">{ article.title }</div>
