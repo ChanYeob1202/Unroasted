@@ -6,7 +6,7 @@ export default function HeroSection({ opacity }) {
   return (
     <motion.div
       style={{ opacity }}
-      className="relative h-[60vh]"
+      className="relative h-[60vh] "
     >
       <div 
         className="absolute inset-0 bg-center bg-cover bg-no-repeat"

@@ -1,4 +1,2 @@
-- [o] store blog_categories data in firestore
-- [o] fetch them using useEffect
-- [o] implement onClick event handler for categories buttons
-- [ ] toggle true || false when click button, getDoc, and setDoc i guessㅁ
+[ ] fetch author's profile image url 
+[ ] make an article card component

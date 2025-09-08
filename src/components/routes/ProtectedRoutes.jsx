@@ -6,7 +6,7 @@ export default function ProtectedRoutes({ children }) {
 
 
     const { currentUser } = useAuth();
-    console.log(currentUser?.uid);
+    // console.log(currentUser?.uid);
 
     if (!currentUser) {
         alert('Please sign in first to access this page');

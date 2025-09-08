@@ -41,7 +41,7 @@ const FeatureShowcase = () => {
         'Tasting notes tracker',
         'Brewing recipes'
       ]
-    }
+    },
   };
 
   return (
@@ -49,7 +49,7 @@ const FeatureShowcase = () => {
       <h2 className="text-2xl text-coffee text-center mb-12">Platform Features</h2>
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {Object.keys(features).map((key) => (
+          { Object.keys(features).map((key) => (
             <motion.button
               key={key}
               whileHover={{ scale: 1.05 }}
@@ -63,7 +63,7 @@ const FeatureShowcase = () => {
             >
               {features[key].title}
             </motion.button>
-          ))}
+          )) }
         </div>
 
         <motion.div
