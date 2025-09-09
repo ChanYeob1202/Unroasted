@@ -1,13 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import ArticleCard from '../components/cms/ArticleCard';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { NavLink } from 'react-router-dom';
 
 export default function Blog() {
   const [ datas, setData ] = useState(null);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState(null);
-
+  
+  const navigate = useNavigate();
+  const openArticle = ( id ) => { 
+    console.log('openArticle ->', id); 
+    navigate(`/blog/${id}`); 
+  };
+  
   useEffect(() => {
     const fetchData = async() => {
       try {
@@ -20,12 +26,13 @@ export default function Blog() {
           console.error('Response text:', errorText);
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
         const result = await response.json();
         setData(result.data); 
-        // console.log("Full result.data:", result.data);
         setError(null);
       } catch(error){
         setError(error.message);
+        alert(error);
         console.error('Error fetching articles:', error);
       } finally {
         setLoading(false);
@@ -33,7 +40,7 @@ export default function Blog() {
     }
     fetchData();
   }, []);
-  
+
   return (  
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -47,9 +54,14 @@ export default function Blog() {
           <h1 className="text-sm sm:text-lg lg:text-2xl font-bold">Coffee</h1>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold">Thoughts</h1>
         </div>
+        
       </div>
       { datas?.map((data) => (
-        <ArticleCard key={data.id} data={data} />
+        <ArticleCard 
+          key={data.id} 
+          data={data} 
+          onClick = {() => openArticle(data.id)}
+          />
       ))}
     
     </motion.div>
