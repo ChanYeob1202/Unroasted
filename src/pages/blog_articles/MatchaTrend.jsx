@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion';
-import { marked } from 'marked';
+import React from 'react'
+
 import ArticleFormat from '../../components/cms/ArticleFormat';
 
 export default function MatchaTrend() {

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { motion } from 'framer-motion'
 import { marked } from 'marked'
 
-export default function ArticleFormat({id}) {
+export default function ArticleFormat({ id }) {
     const [ article, setArticleData ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(null);
@@ -12,18 +12,20 @@ export default function ArticleFormat({id}) {
           try {
             setLoading(true);
             const response = await fetch(`http://localhost:1337/api/articles/${id}?populate=*`);
+            if(!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
             setArticleData(data.data);
+            setError(null);
           } catch(error) {
             setError(error.message);
           } finally{
             setLoading(false);
           }
         }
-        fetchArticle();
+        if(id) fetchArticle();
       }, [id]);
 
-
+      const a = article?.attributes ?? {};
 
   return (
     <div className = "min-h-screen bg-white">
@@ -47,16 +49,15 @@ export default function ArticleFormat({id}) {
       
       {article && (
         <div className="max-w-4xl mx-auto px-6 py-12">
-          {/* Hero Image Placeholder */}
+          {/* Hero Image */}
           <motion.div 
         initial = {{ opacity: 0, y: 20 }}
         animate = {{ opacity: 1, y:0 }}
         transition = {{ duration: 0.8, ease: "easeOut" }}
         >
           <img 
-            // src ="/images/matcha.jpg"
-            // src = {}
-            alt = {article?.title || "Matcha trend article"}
+            src={a.cover?.data?.attributes?.url ? `http://localhost:1337${a.cover.data.attributes.url}` : undefined}
+            alt = {a.title || "Matcha trend article"}
             className = "mb-12 rounded-lg w-80 h-80 mx-auto"
           /> 
 
@@ -64,21 +65,21 @@ export default function ArticleFormat({id}) {
       </motion.div>
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6">
-            {article.title}
+            {a.title}
           </h1>
         </div>
 
           {/* Article Subtitle */}
           <div className="text-center mb-8">
             <p className="text-lg text-gray-900 font-light max-w-2xl mx-auto leading-relaxed">
-              {article.description}
+              {a.description}
             </p>
           </div>
 
           {/* Metadata */}
           <div className="text-center mb-12">
             <p className="text-sm text-gray-500">
-            {new Date(article.publishedAt || article.createdAt).toLocaleDateString('en-US', {
+            {new Date(a.publishedAt || a.createdAt).toLocaleDateString('en-US', {
                 weekday: 'long',
                 year: 'numeric',
                 month: 'long',
@@ -99,7 +100,7 @@ export default function ArticleFormat({id}) {
             prose-blockquote:border-l-gray-300 prose-blockquote:text-gray-700
             prose-blockquote:font-light">
             <div 
-              dangerouslySetInnerHTML={{ __html: marked(article.blocks?.[0]?.body || '') }}
+              dangerouslySetInnerHTML={{ __html: marked(a.blocks?.[0]?.body || '') }}
             />
           </div>
         </div>
