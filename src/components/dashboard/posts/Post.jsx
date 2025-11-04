@@ -3,10 +3,6 @@ import TableHead from '../../../ui/TableHead';
 import TableBody from '../../../ui/TableBody';
 
 export default function Post({ posts, loading, error }) {
-    // Calculate total views
-    const totalViews = posts?.reduce((sum, post) => sum + (post.views || 0), 0) || 0;
-
-
     const  tableConfig = [
         { id: "title", name: "Title" },
         { id: "category", name: "Category" },

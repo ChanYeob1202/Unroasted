@@ -48,13 +48,13 @@ function App() {
             <PublicRoutes>
               <SignInPage />
             </PublicRoutes>
-          } />
+          }/>
 
           <Route path="signup" element={
             <PublicRoutes>
               <SignUpPage />
             </PublicRoutes>
-          } />
+          }/>
 
           {/* Blog Routes */}
           <Route path="blog/*" element={<BlogRoutes />} />

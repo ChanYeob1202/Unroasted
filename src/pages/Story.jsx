@@ -1,7 +1,6 @@
 import React from 'react';
 import StoryIntro from '../components/story/StoryIntro';
 import { motion, useScroll } from 'framer-motion';
-import SkillsShowcase from '../components/story/SkillsShowcase';
 import PhotoGallery from '../components/story/PhotoGallery';
 import JourneyTimeline from '../components/story/JourneyTimeline';
 import ParallaxCoffee from '../ui/ParallaxCoffee';
@@ -53,7 +52,6 @@ export default function Story() {
         >
           <StoryIntro />
           <JourneyTimeline />
-          {/* <SkillsShowcase /> */}
           <PhotoGallery />
         </motion.div>
       </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import AboutStorySection from '../components/about/AboutStorySection'
-import JoinSection from '../components/about/JoinSection'
-import ValueSection from '../components/about/ValueSection'
+import AboutStorySection from '../components/about/AboutSection';
+import JoinSection from '../components/home/JoinSection';
+import ValueSection from '../components/home/ValueSection';
 
 // Interactive Feature Showcase Component
 const FeatureShowcase = () => {

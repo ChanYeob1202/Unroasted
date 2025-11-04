@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
 import ProtectedRoutes from './ProtectedRoutes';
 import ArticleFormat from '../../components/cms/ArticleFormat';
-import MatchaTrend from '../../pages/blog_articles/MatchaTrend';
 
 export default function BlogRoutes() {
 
