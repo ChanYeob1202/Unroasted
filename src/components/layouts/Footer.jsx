@@ -62,7 +62,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/developer" className="text-gray-600 hover:text-coffee">
+                <Link to="https://my-portfolio-orcin-chi-63.vercel.app/" className="text-gray-600 hover:text-coffee">
                   Developer Site
                 </Link>
               </li>
