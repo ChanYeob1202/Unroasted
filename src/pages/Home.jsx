@@ -14,18 +14,18 @@ export default function Home() {
   const storyOpacity = useTransform(scrollYProgress, [0.3, 0.4], [1,0]);
   const valueOpacity = useTransform(scrollYProgress, [0.6, 0.8], [1,0]);
 
-
   useEffect(() => {
-    const fetchArticleData = async () => {
-        try{
-          const response = await fetch('http://localhost:1337/api/articles?populate=cover&pagination[pageSize]=3&sort[0]=publishedAt:desc')
-          const result = await response.json()
-          setFeaturedARticles(result.data);
-          console.log(setFeaturedARticles);
-        } catch (error){
-        }
+    const fetchARticleData = async () =>{
+      try {
+        const response = await fetch('http://localhost:1337/api/articles?populate=cover&pagination[pageSize]=3&sort[0]=publishedAt:desc')
+        const result = await response.json()
+        setFeaturedARticles(result.data);
+      } catch (error) {
+        console.error("Error fetching articles: ", error)
+      }
     }
-}, [])
+    fetchARticleData();
+  }, [])
 
   return (
     <div className="min-h-screen">
@@ -40,7 +40,7 @@ export default function Home() {
         <AboutStorySection opacity = {storyOpacity}/>
         <ValueSection  opacity = {valueOpacity}/>
         <BlogPreviewSection />
-        <JoinSection />
+        <JoinSection  articles = {featuredArticles}/>
       </div>
     </div>
   )    
