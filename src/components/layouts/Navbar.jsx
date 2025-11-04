@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-// import { TiShoppingCart } from "react-icons/ti";
 import NavBarList from '../list/NavBarList';
 import Logo from '../../ui/Logo';
 import { CiViewList } from "react-icons/ci";

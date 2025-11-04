@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedinIn, FaGithub, FaMedium } from "react-icons/fa";
-import Logo from '../../ui/Logo';
 
 export default function Footer() {
   const socialLinks = [
