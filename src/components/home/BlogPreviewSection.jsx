@@ -4,13 +4,37 @@ import { useNavigate } from 'react-router-dom'
 import AnimatedSection from '../animation/AnimatedSection'
 import ArticleCard from '../cms/ArticleCard'
 
-export default function BlogPreviewSection({ articles = [] }) {
+export default function BlogPreviewSection({ articles = [], loading = false, error = null }) {
   const navigate = useNavigate();
 
   const openArticle = (slug) => {
     navigate(`/blog/${slug}`);
   };
 
+  // Loading state
+  if (loading) {
+    return (
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="w-8 h-8 border-2 border-gray-300 border-t-coffee rounded-full animate-spin mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading articles...</p>
+        </div>
+      </section>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-red-600 text-sm">Unable to load articles</p>
+        </div>
+      </section>
+    );
+  }
+
+  // Empty state
   if (!articles || articles.length === 0) {
     return null;
   }
