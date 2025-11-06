@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { doc, updateDoc, getDoc, getDocs, collection, query, where, deleteDoc  } from 'firebase/firestore'
+import { doc, updateDoc, getDocs, collection, query, where } from 'firebase/firestore'
 import { db} from '../lib/firebase/firebase';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
 import ReactDOM from 'react-dom';

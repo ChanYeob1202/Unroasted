@@ -2,9 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
 import { FaRegCommentDots } from "react-icons/fa6";
-{/* <FaRegCommentDots /> */}
-
-
 
 export default function BulletinBoard() {
   /* 
@@ -37,7 +34,7 @@ export default function BulletinBoard() {
         animate = {{ opacity: 1, y:0 }}
         transition = {{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="font-serif text-2xl font-semibold text-center mt-8">Share Your Thoughts</h1>
+        <h1 className="mt-8 font-serif text-2xl font-semibold text-center text-coffee">Share Your Thoughts</h1>
       </motion.div>
 
       {/* lists */}
@@ -51,7 +48,7 @@ export default function BulletinBoard() {
         {articles.map((article) => (
           <Link
             key={ article.id }
-            to={`/board/${article.id}`}  
+            to={`/board/${article.id}`}
             className='grid grid-cols-12 gap-4 px-4 py-4 border-b items-center hover:bg-gray-50 transition'
           >
             <div className="col-span-7 truncate font-medium text-gray-900">{ article.title }</div>
