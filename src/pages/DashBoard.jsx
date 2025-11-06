@@ -12,7 +12,7 @@ export default function DashBoard() {
     data: users, 
     loading: userLoading, 
     error: userError 
-  } = useFetchData(viewState === "users" ? "users" : ""); 
+  } = useFetchData(viewState === "users" ? "users" : "");
 
   const { 
     data: posts, 
@@ -35,7 +35,7 @@ export default function DashBoard() {
             error={ userError }
           />
         );
-
+        
       case "posts":
         return (
           <Post 

@@ -10,7 +10,7 @@ export default function HeroIntro() {
       className="text-center text-white"
     >
       <h1 className="text-5xl font-light mb-4">UnRoasted</h1>
-      <p className="text-xl font-extralight">A cozy corner of the internet where coffee stories brew and communities grow</p>
+      <p className="text-xl font-extralight">Where every coffee journey begins, before the first roast</p>
     </motion.div>
   );
 }
