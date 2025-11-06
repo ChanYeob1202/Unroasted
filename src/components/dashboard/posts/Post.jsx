@@ -1,13 +1,9 @@
-// src/components/dashboard/posts/Post.jsx
 import React from 'react';
 import TableHead from '../../../ui/TableHead';
 import TableBody from '../../../ui/TableBody';
 
 export default function Post({ posts, loading, error }) {
-    // Calculate total views
-    const totalViews = posts?.reduce((sum, post) => sum + (post.views || 0), 0) || 0;
-
-    const tableConfig = [
+    const  tableConfig = [
         { id: "title", name: "Title" },
         { id: "category", name: "Category" },
         { id: "status", name: "Status" },
@@ -27,7 +23,7 @@ export default function Post({ posts, loading, error }) {
                 }}
                 className="text-blue-500 hover:text-blue-700"
               >
-                Edit
+                Edit 
               </button>
             )
         }
@@ -41,7 +37,7 @@ export default function Post({ posts, loading, error }) {
         publishedAt: post.publishedDate
             ? new Date(post.publishedDate.seconds * 1000).toLocaleDateString()
             : "N/A"
-    }));
+        }));
 
     if ( loading ) {
         return (

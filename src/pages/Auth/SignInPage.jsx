@@ -123,7 +123,7 @@ export default function SignInPage() {
 
   return (
     <motion.div 
-      className='min-h-screen flex flex-col items-center justify-center -mt-40 z-0'
+      className='min-h-screen flex flex-col items-center justify-center -mt-20 z-0'
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -170,7 +170,7 @@ export default function SignInPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setShowResetInput(false)}
+              onClick={() => setShowResetInput( false )}
             />
             <motion.div
               className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
@@ -178,9 +178,9 @@ export default function SignInPage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              onClick={e => e.stopPropagation()}
+              onClick={ e => e.stopPropagation() }
             >
-              <form onSubmit={handleResetEmail} className="space-y-4">
+              <form onSubmit={ handleResetEmail } className="space-y-4">
                 <h2 className="text-2xl font-bold text-coffee mb-4">Reset Password</h2>
                 <p className="text-gray-600 mb-4">
                   Enter your email address and we'll send you instructions to reset your password.

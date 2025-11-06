@@ -1,50 +1,61 @@
-import React, { useState } from 'react';
-import { useFetchData } from '../hooks/useFetchData';
+import React, {useState, useEffect} from 'react'
+import ArticleCard from '../components/cms/ArticleCard';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import BlogHero from '../components/blog/BlogHero';
-import BlogSearch from '../components/blog/BlogSearch';
-import BlogGrid from '../components/blog/BlogGrid';
-import BlogFilter from '../components/blog/BlogFilter';
 
 export default function Blog() {
-  const { data: posts, loading, error } = useFetchData('posts');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('all');
-
-  //Set because it removes duplicated category
-  const postCategories = ['all', ...new Set(posts.flatMap(post => post.primaryCategory))];
+  const [datas, setData] = useState(null);
   
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchQuery.toLowerCase());
+  const navigate = useNavigate();
 
-    const matchesFilter = selectedFilter === 'all' || post.primaryCategory === selectedFilter;
-    return matchesSearch && matchesFilter;
-  });
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-
-  return (
-    <div className="min-h-screen bg-white">
-      <motion.div 
-        initial = {{opacity: 0, y: 20}}
-        animate = {{opacity: 1, y:0}}
-        transition = {{duration: 0.8, ease: "easeOut"}}
-      >
-       <BlogHero />
-      </motion.div>
-      <div className="max-w-6xl mx-auto px-4">
-        <BlogSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <BlogFilter 
-          categories={postCategories}
-          selectedFilter={selectedFilter}
-          onFilterSelect={setSelectedFilter}
-        />
-        <div className="pb-20">
-          <BlogGrid posts={filteredPosts} loading={loading} />
-        </div>
+  // Change parameter name to slug
+  const openArticle = (slug) => { 
+    console.log('Opening article with slug:', slug);
+    navigate(`/blog/${slug}`); // Use slug in URL
+  };
+  
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const response = await fetch('http://localhost:1337/api/articles?populate[author][populate]=*&populate=cover');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('Full API response:', result);
+        setData(result.data); 
+      } catch(error){
+        console.error('Error fetching articles:', error);
+      }
+    }
+    fetchData();
+  }, []);
+  
+  return (  
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="py-12 px-6 max-w-7xl mx-auto"
+    >
+      <div className="mb-16">
+        <h1 className="text-4xl md:text-6xl font-bold text-coffee mb-4">
+          Coffee Thoughts
+        </h1>
+        <div className="w-24 h-1 bg-amber-600"></div>
       </div>
-    </div>
-  );
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {datas?.map((data) => (
+          <ArticleCard 
+            key={data.id} 
+            data={data} 
+            onClick={(slug) => openArticle(slug)} // Pass slug
+          />
+        ))}
+      </div>
+    </motion.div>
+  )
 }

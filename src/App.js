@@ -5,18 +5,16 @@ import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import AdminRoute from './components/routes/AdminRoute'
 import PublicRoutes from "./components/routes/PublicRoutes";
 import BulletinBoard from "./pages/BulletinBoard";
-import Specialty from "./pages/blog_posts/Specialty";
 // Page Imports
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Story from "./pages/Story";
 import DashBoard from "./pages/DashBoard";
+import BlogRoutes from "./components/routes/BlogRoutes";
 // Auth Pages
 import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
 // Blog Routes
-import CreamTop from "./pages/blog_posts/CreamTop";
 
 function App() {
   return (
@@ -27,7 +25,6 @@ function App() {
           {/* Main Routes */}
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
-          <Route path="about" element={<About />} />
           <Route path="blog" element={
             <ProtectedRoutes>
               <Blog />
@@ -49,26 +46,17 @@ function App() {
             <PublicRoutes>
               <SignInPage />
             </PublicRoutes>
-          } />
+          }/>
 
           <Route path="signup" element={
             <PublicRoutes>
               <SignUpPage />
             </PublicRoutes>
-          } />
+          }/>
 
           {/* Blog Routes */}
-          <Route path ="/blog/cream-top-post" element={
-            <ProtectedRoutes>
-              <CreamTop />
-            </ProtectedRoutes>
-          } />
-
-          <Route path ="/blog/specialty-coffee-guide" element={
-            <ProtectedRoutes>
-              <Specialty />
-            </ProtectedRoutes>
-          } />
+          <Route path="blog/*" element={<BlogRoutes />} />
+           
         </Route>
       </Routes>
     </>
