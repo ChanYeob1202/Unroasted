@@ -22,12 +22,12 @@ export default function AboutStorySection({opacity}) {
               <div className="w-20 h-1 bg-amber-600 mx-auto mb-8"></div>
             </div>
 
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            <div className="space-y-4 text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
               <p>
-                UnRoasted was born from a simple idea: to create a welcoming space where coffee lovers of all levels can connect, learn, and share their passion.
+                UnRoasted is where I share my personal thoughts and experiences with coffee—from barista life to the stories behind each cup.
               </p>
               <p>
-                We believe that every cup of coffee tells a story, and every coffee lover has a unique journey. At UnRoasted, we're building more than just a website - we're creating a community where coffee knowledge flows freely and friendships brew naturally.
+                This is my space to reflect on coffee culture, craftsmanship, and the moments that make this journey meaningful.
               </p>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { motion } from 'framer-motion'
 import { marked } from 'marked'
 
-export default function ArticleFormat({ id }) {
+export default function ArticleFormat({ id }) { // 'id' is now actually a slug
     const [ article, setArticleData ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(null);
@@ -11,12 +11,22 @@ export default function ArticleFormat({ id }) {
         const fetchArticle = async() =>{
           try {
             setLoading(true);
-            const response = await fetch(`http://localhost:1337/api/articles/${id}?populate=*`);
+            // Fetch by slug instead of ID
+            const response = await fetch(`http://localhost:1337/api/articles?filters[slug][$eq]=${id}&populate=*`);
+            
             if(!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
-            setArticleData(data.data);
+            
+            // When filtering, Strapi returns an array
+            if (data.data && data.data.length > 0) {
+              setArticleData(data.data[0]); // Get first (and only) result
+            } else {
+              throw new Error('Article not found');
+            }
+            
             setError(null);
           } catch(error) {
+            console.error('Error fetching article:', error);
             setError(error.message);
           } finally{
             setLoading(false);
@@ -25,7 +35,8 @@ export default function ArticleFormat({ id }) {
         if(id) fetchArticle();
       }, [id]);
 
-      const a = article?.attributes ?? {};
+      // Handle both flat and nested structures
+      const a = article?.attributes ?? article ?? {};
 
   return (
     <div className = "min-h-screen bg-white">
@@ -51,23 +62,27 @@ export default function ArticleFormat({ id }) {
         <div className="max-w-4xl mx-auto px-6 py-12">
           {/* Hero Image */}
           <motion.div 
-        initial = {{ opacity: 0, y: 20 }}
-        animate = {{ opacity: 1, y:0 }}
-        transition = {{ duration: 0.8, ease: "easeOut" }}
-        >
-          <img 
-            src={a.cover?.data?.attributes?.url ? `http://localhost:1337${a.cover.data.attributes.url}` : undefined}
-            alt = {a.title || "Matcha trend article"}
-            className = "mb-12 rounded-lg w-80 h-80 mx-auto"
-          /> 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y:0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <img 
+              src={a.cover?.url 
+                ? `http://localhost:1337${a.cover.url}` 
+                : a.cover?.data?.attributes?.url 
+                ? `http://localhost:1337${a.cover.data.attributes.url}` 
+                : undefined}
+              alt={a.title || "Article cover"}
+              className="mb-12 rounded-lg w-80 h-80 mx-auto"
+            /> 
 
-          {/* Article Title */}
-      </motion.div>
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6">
-            {a.title}
-          </h1>
-        </div>
+            {/* Article Title */}
+          </motion.div>
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6">
+              {a.title}
+            </h1>
+          </div>
 
           {/* Article Subtitle */}
           <div className="text-center mb-8">
@@ -94,7 +109,7 @@ export default function ArticleFormat({ id }) {
             prose-h1:text-3xl prose-h1:mb-8 prose-h1:mt-12 prose-h1:text-center
             prose-h2:text-2xl prose-h2:font-serif prose-h2:mb-6 prose-h2:mt-10 prose-h2:text-left
             prose-p:text-gray-900 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-justify
-            prose-strong:text-gray-900 prose-strong:font-semiboldf
+            prose-strong:text-gray-900 prose-strong:font-semibold
             prose-em:text-gray-700 prose-em:font-light
             prose-ul:text-gray-900 prose-li:mb-2
             prose-blockquote:border-l-gray-300 prose-blockquote:text-gray-700
