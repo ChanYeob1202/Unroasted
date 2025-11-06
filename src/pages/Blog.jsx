@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export default function Blog() {
-  const [ datas, setData ] = useState(null);
+  const [datas, setData] = useState(null);
   
   const navigate = useNavigate();
-  const openArticle = ( id ) => { 
-    console.log('openArticle ->', id); 
-    navigate(`/blog/${id}`); 
+
+  // Change parameter name to slug
+  const openArticle = (slug) => { 
+    console.log('Opening article with slug:', slug);
+    navigate(`/blog/${slug}`); // Use slug in URL
   };
   
   useEffect(() => {
@@ -22,6 +24,7 @@ export default function Blog() {
         }
         
         const result = await response.json();
+        console.log('Full API response:', result);
         setData(result.data); 
       } catch(error){
         console.error('Error fetching articles:', error);
@@ -49,7 +52,7 @@ export default function Blog() {
           <ArticleCard 
             key={data.id} 
             data={data} 
-            onClick={() => openArticle(data.id)}
+            onClick={(slug) => openArticle(slug)} // Pass slug
           />
         ))}
       </div>

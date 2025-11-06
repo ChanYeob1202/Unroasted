@@ -7,7 +7,6 @@ import PublicRoutes from "./components/routes/PublicRoutes";
 import BulletinBoard from "./pages/BulletinBoard";
 // Page Imports
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Story from "./pages/Story";
 import DashBoard from "./pages/DashBoard";
@@ -26,7 +25,6 @@ function App() {
           {/* Main Routes */}
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
-          <Route path="about" element={<About />} />
           <Route path="blog" element={
             <ProtectedRoutes>
               <Blog />
@@ -58,7 +56,6 @@ function App() {
 
           {/* Blog Routes */}
           <Route path="blog/*" element={<BlogRoutes />} />
-          
            
         </Route>
       </Routes>

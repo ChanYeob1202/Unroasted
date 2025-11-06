@@ -12,10 +12,11 @@ export default function Home() {
   const { scrollYProgress } = useScroll()
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const storyOpacity = useTransform(scrollYProgress, [0.3, 0.4], [1,0]);
-  const valueOpacity = useTransform(scrollYProgress, [0.6, 0.8], [1,0]);
+
+
 
   useEffect(() => {
-    const fetchARticleData = async () =>{
+    const fetchArticleData = async () =>{
       try {
         const response = await fetch('http://localhost:1337/api/articles?populate=cover&pagination[pageSize]=3&sort[0]=publishedAt:desc')
         const result = await response.json()
@@ -24,7 +25,7 @@ export default function Home() {
         console.error("Error fetching articles: ", error)
       }
     }
-    fetchARticleData();
+    fetchArticleData();
   }, [])
 
   return (
@@ -35,11 +36,11 @@ export default function Home() {
         style={{ scaleX: scrollYProgress }}
       />
       <HeroSection opacity={heroOpacity} />
+
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-20">
         <AboutStorySection opacity = {storyOpacity}/>
-        <ValueSection  opacity = {valueOpacity}/>
-        <BlogPreviewSection />
+        <BlogPreviewSection articles = { featuredArticles }/>
         <JoinSection  articles = {featuredArticles}/>
       </div>
     </div>
