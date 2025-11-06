@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# UnRoasted - Coffee Community Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> **Status**: Archived / On Hold (Last Updated: [Current Date])
+> 
+> This project is currently on hold. The codebase is preserved for reference but is not actively maintained.
 
-## Available Scripts
+## 📋 Project Overview
 
-In the project directory, you can run:
+UnRoasted is a React-based coffee community platform that combines blog functionality, community features, and user management. The platform allows users to read articles, participate in a community bulletin board, and includes an admin dashboard for content management.
 
-### `yarn start`
+## 🏗️ Architecture
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- **Framework**: React 18.3.1
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Routing**: React Router DOM 7.3.0
+- **State Management**: React Context API (AuthContext)
+- **UI Components**: Custom components + Headless UI
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend Services
+- **CMS**: Strapi (localhost:1337) - Content management for blog articles
+- **Database**: Firebase Firestore - User data, posts, community content
+- **Authentication**: Firebase Auth
+- **Server**: Express.js (localhost:4242) - Custom API endpoints
 
-### `yarn test`
+### Key Dependencies
+- Firebase (Authentication & Firestore)
+- Strapi (Headless CMS)
+- Framer Motion (Animations)
+- React Hot Toast (Notifications)
+- Marked (Markdown parsing)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ✨ Current Features
 
-### `yarn build`
+### ✅ Implemented
+1. **Homepage**
+   - Hero section with parallax effects
+   - About/Story section
+   - Blog preview section (3 latest articles)
+   - Join section
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Blog System**
+   - Article listing page (protected route)
+   - Individual article pages with markdown support
+   - Article cards with cover images
+   - Fetches from Strapi CMS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Authentication**
+   - Sign in/Sign up pages
+   - Google OAuth integration
+   - Password reset functionality
+   - Protected routes
+   - Admin role verification
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Community Features**
+   - Bulletin board (community posts)
+   - User interactions (likes, posts)
 
-### `yarn eject`
+5. **Admin Dashboard**
+   - User management table
+   - Posts management table
+   - Loading and error states
+   - Admin-only route protection
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. **Story Page**
+   - Coffee story/education content
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🚧 Partially Implemented / Known Issues
+- Error handling: Some components only log errors to console (Home.jsx, Blog.jsx) - needs user-facing error messages
+- Loading states: Missing in some components
+- Blog content management: Requires regular Strapi updates
+- Dashboard features: Some TODOs remain (see Dashboard.todo)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### ❌ Not Implemented
+- Payment integration (Stripe code exists but not fully integrated)
+- Advanced search/filtering
+- Dashboard pagination
+- Email notifications
+- Production deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📁 Project Structure
