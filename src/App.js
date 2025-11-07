@@ -4,7 +4,7 @@ import RoutLayout from "./components/layouts/RouteLayout";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import AdminRoute from './components/routes/AdminRoute'
 import PublicRoutes from "./components/routes/PublicRoutes";
-import BulletinBoard from "./pages/BulletinBoard";
+import BulletinBoard from "./pages/community/BulletinBoard";
 // Page Imports
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -14,7 +14,8 @@ import BlogRoutes from "./components/routes/BlogRoutes";
 // Auth Pages
 import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
-// Blog Routes
+import CreatePost from "./pages/community/CreatePost";
+// 
 
 function App() {
   return (
@@ -56,6 +57,8 @@ function App() {
 
           {/* Blog Routes */}
           <Route path="blog/*" element={<BlogRoutes />} />
+
+          <Route path = "createPost" element = { <CreatePost />}  />
            
         </Route>
       </Routes>
