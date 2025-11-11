@@ -157,41 +157,7 @@ export const AuthProvider = ({children}) => {
         }
     };
 
-    const addPurchase = async (userId, purchaseData) => {
-        try {
-            const userRef = doc(db, "users", userId);
-            const userDoc = await getDoc(userRef);
-            
-            if (userDoc.exists()) {
-                const currentPurchases = userDoc.data().purchases || [];
-                await setDoc(userRef, {
-                    ...userDoc.data(),
-                    purchases: [...currentPurchases, {
-                        ...purchaseData,
-                        purchaseDate: new Date()
-                    }]
-                });
-            } else {
-                throw new Error('User document not found');
-            }
-        } catch (error) {
-            console.error("Error adding purchase:", error);
-            throw new Error('Failed to add purchase. Please try again.');
-        }
-    };
-
-    const getUserPurchases = async (userId) => {
-        try {
-            const userDoc = await getDoc(doc(db, "users", userId));
-            if(userDoc.exists()){
-                return userDoc.data().purchases || [];
-            }
-            return [];
-        } catch(error){
-            console.error("Error getting purchases:", error);
-            throw new Error('Failed to fetch purchases. Please try again.');
-        }
-    };
+    
 
     const value = {
         currentUser,
@@ -202,8 +168,6 @@ export const AuthProvider = ({children}) => {
         logOut,
         signInWithGoogle,
         resetPassword,
-        addPurchase,
-        getUserPurchases
     };
 
     return (
