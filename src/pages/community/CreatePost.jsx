@@ -13,7 +13,6 @@ export default function CreatePost() {
     
   return (
     <div className = "flex py-20 justify-center min-h-screen">
-        
 
 
     </div>

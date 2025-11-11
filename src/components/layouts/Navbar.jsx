@@ -32,7 +32,6 @@ export default function Navbar() {
     { link: "/story", listName: "story" },
     { link: "/blog", listName: "blog" },
     { link: "/community", listName: "community" },
-    ...(isAdmin ? [{ link: "/dashBoard", listName: "dash board"}] : [])
   ];
 
   return (

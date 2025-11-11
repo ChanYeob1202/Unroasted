@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
 import { FaRegCommentDots } from "react-icons/fa6";
 
-export default function BulletinBoard() {
+export default function Community() {
 
   /* 
     1. Title
