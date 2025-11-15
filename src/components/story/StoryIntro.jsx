@@ -24,15 +24,15 @@ export default function StoryIntro() {
       <IntroSection />
       <PassionsSection />
       <StorySection title="My Coffee Origin Story">
-        <div className="flex flex-col md:flex-row items-start gap-8 bg-white/50 rounded-xl p-6 shadow-sm">
-          <div className="md:w-1/3">
+        <div className="flex flex-col items-center gap-8 bg-white/50 rounded-xl p-6 shadow-sm">
+          <div className="w-full max-w-md">
             <img 
-              src="/images/mainPicture2.jpeg" 
+              src="/images/redcap.png" 
               alt="Barista pouring latte art" 
-              className="w-full max-w-[200px] rounded-lg shadow-md mx-auto mt-10"
+              className="w-full rounded-lg shadow-md"
             />
           </div>
-          <div className="md:w-2/3">
+          <div className="w-full max-w-3xl">
             <div className="text-lg text-gray-700 font-extralight leading-relaxed space-y-4">
               <p>
                 My relationship with coffee began rather unexceptionally—through necessity. As a student, coffee was simply fuel, consumed in concerning quantities to power through late-night coding sessions. But somewhere between the countless cups, curiosity sparked.

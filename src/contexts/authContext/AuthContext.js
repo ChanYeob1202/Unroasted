@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { auth, db } from "../../lib/firebase/firebase";
 import { 
     createUserWithEmailAndPassword, 
-    GoogleAuthProvider, 
+    GoogleAuthProvider,
     signInWithEmailAndPassword, 
     signOut, 
     onAuthStateChanged, 
@@ -156,7 +156,6 @@ export const AuthProvider = ({children}) => {
             }
         }
     };
-
     
 
     const value = {

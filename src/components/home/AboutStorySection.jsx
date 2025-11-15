@@ -24,7 +24,7 @@ export default function AboutStorySection({opacity}) {
 
             <div className="space-y-4 text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
               <p>
-                UnRoasted is where I share my personal thoughts and experiences with coffee—f3rom barista life to the stories behind each cup.
+                UnRoasted is where I share my personal thoughts and experiences with coffee—from barista life to the stories behind each cup.
               </p>
               <p>
                 This is my space to reflect on coffee culture, craftsmanship, and the moments that make this journey meaningful.
