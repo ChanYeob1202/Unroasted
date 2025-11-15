@@ -14,6 +14,7 @@ export default function Post({ posts, loading, error }) {
             render: (row) => row.views?.toLocaleString() || '0'
         },
         {
+            
             id: "actions",
             name: "Actions",
             render: (row) => (

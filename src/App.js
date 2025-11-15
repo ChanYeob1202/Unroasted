@@ -14,6 +14,7 @@ import BlogRoutes from "./components/routes/BlogRoutes";
 import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
 import CreatePost from "./pages/community/CreatePost";
+import CommunityPostDetail from "./components/dashboard/posts/CommunityPostDetail";
 // 
 
 function App() {
@@ -30,9 +31,27 @@ function App() {
               <Blog />
             </ProtectedRoutes>
           } />
+
+
           <Route path="story" element={<Story />} />
-          <Route path="community" element={<Community />} />
-          {/* Board Form Page */}
+          
+
+          <Route path="community" element={
+            <ProtectedRoutes>
+              <Community />
+            </ProtectedRoutes>
+            } />
+          <Route path="community/create-post" element={
+            <ProtectedRoutes>
+              <CreatePost />
+            </ProtectedRoutes>
+            } />
+
+          <Route path="community/:postId" element={
+            <ProtectedRoutes>
+              <CommunityPostDetail />
+            </ProtectedRoutes>
+          }/>
         
         
           {/* Auth Routes */}
@@ -50,7 +69,9 @@ function App() {
 
           {/* Blog Routes */}
           <Route path="blog/*" element={<BlogRoutes />} />
-          <Route path = "createPost" element = { <CreatePost />}  />
+
+    
+          
            
         </Route>
       </Routes>
