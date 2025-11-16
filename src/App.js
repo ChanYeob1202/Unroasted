@@ -41,7 +41,7 @@ function App() {
               <Community />
             </ProtectedRoutes>
             } />
-          <Route path="community/create-post" element={
+          <Route path="/create-post" element={
             <ProtectedRoutes>
               <CreatePost />
             </ProtectedRoutes>
