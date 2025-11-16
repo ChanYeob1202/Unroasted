@@ -1,39 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { marked } from 'marked'
+import { useFetchApi } from '../../hooks/useFetchApi'
 
 export default function ArticleFormat({ id }) { // 'id' is now actually a slug
-    const [ article, setArticleData ] = useState(null);
-    const [ loading, setLoading ] = useState(true);
-    const [ error, setError ] = useState(null);
-
-    useEffect(()=> {
-        const fetchArticle = async() =>{
-          try {
-            setLoading(true);
-            // Fetch by slug instead of ID
-            const response = await fetch(`http://localhost:1337/api/articles?filters[slug][$eq]=${id}&populate=*`);
-            
-            if(!response.ok) throw new Error(`HTTP ${response.status}`);
-            const data = await response.json();
-            
+    const { data: article, loading, error: fetchError } = useFetchApi(
+        id ? `http://localhost:1337/api/articles?filters[slug][$eq]=${id}&populate=*` : null,
+        {},
+        [id],
+        (data) => {
             // When filtering, Strapi returns an array
             if (data.data && data.data.length > 0) {
-              setArticleData(data.data[0]); // Get first (and only) result
-            } else {
-              throw new Error('Article not found');
+                return data.data[0]; // Get first (and only) result
             }
-            
-            setError(null);
-          } catch(error) {
-            console.error('Error fetching article:', error);
-            setError(error.message);
-          } finally{
-            setLoading(false);
-          }
+            // Return null if not found, let the hook handle the error
+            return null;
         }
-        if(id) fetchArticle();
-      }, [id]);
+    );
+
+    // Check if article was not found
+    const error = fetchError || (article === null && !loading ? 'Article not found' : null);
 
       // Handle both flat and nested structures
       const a = article?.attributes ?? article ?? {};
