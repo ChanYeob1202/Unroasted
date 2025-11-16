@@ -1,43 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, updateDoc, increment } from 'firebase/firestore'
 import { db } from '../../../lib/firebase/firebase'
 import { FaRegCommentDots, FaHeart, FaEye, FaBookmark, FaShare } from 'react-icons/fa6'
 import { motion } from 'framer-motion'
+import { useFetchFirestore } from '../../../hooks/useFetchFirestore'
 
 export default function CommunityPostDetail() {
-  const { postId } = useParams()
-  const [post, setPost] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const { postId } = useParams();
+  
+  const { data: post, loading } = useFetchFirestore(
+    "community_posts",
+    postId,
+    [],
+    [postId]
+  );
 
+  // track view count
   useEffect(() => {
-    const fetchPost = async () => {
-      if (!postId) {
-        setLoading(false)
-        return
-      }
-
+    const incrementViewCount = async () => {
+      if (!postId) return;
+      
       try {
-        setLoading(true)
-        const postDoc = await getDoc(doc(db, "community_posts", postId))
-        if (postDoc.exists()) {
-          setPost({
-            id: postDoc.id,
-            ...postDoc.data()
-          })
-        } else {
-          setPost(null)
-        }
+        const postRef = doc(db, "community_posts", postId);
+        await updateDoc(postRef, {
+          viewCount: increment(1)
+        });
       } catch (error) {
-        console.error("Error fetching post:", error)
-        setPost(null)
-      } finally {
-        setLoading(false)
+        console.error("Error incrementing view count:", error);
       }
     }
-
-    fetchPost()
-  }, [postId]);
+    if (post) {
+      incrementViewCount();
+    }
+  }, [postId, post])
 
   const formatDate = (timestamp) => {
     if (!timestamp) return "—"

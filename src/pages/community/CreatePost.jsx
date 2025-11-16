@@ -14,6 +14,7 @@ export default function CreatePost() {
         submit button
         onsubmit => addDoc() to fireStore "posts" collection
     */
+   
   const [ title, setTitle ] = useState("");
   const [content, setContent ] = useState("");
   const { currentUser } = useAuth();

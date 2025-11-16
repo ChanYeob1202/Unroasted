@@ -1,34 +1,19 @@
-import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom';
-import { collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion';
 import { FaRegCommentDots, FaPlus, FaArrowRight } from "react-icons/fa6";
-import { db } from '../../lib/firebase/firebase';
+import { useFetchFirestore } from '../../hooks/useFetchFirestore';
+import { orderBy, limit } from 'firebase/firestore';
 
 export default function Community() {
-
-    const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-      const fetchPosts = async () => {
-        try {
-          const postRef = collection(db, "community_posts");
-          const q = query(postRef, orderBy("createdAt", "desc"), limit(20));
-          const querySnapshot = await getDocs(q);
-          const community_posts = querySnapshot.docs.map(doc => ({
-            id:doc.id,
-            ...doc.data(),
-          }))
-          setPosts(community_posts);
-
-        } catch (error){
-          console.error("Error fetching posts: ", error);
-        }
-      }
-      fetchPosts();
-    }, []);
+    const { data: postsData } = useFetchFirestore(
+        "community_posts",
+        null,
+        [orderBy("createdAt", "desc"), limit(20)]
+    );
+    const posts = postsData || [];
 
     const gridClasses = `
       grid
@@ -85,7 +70,7 @@ export default function Community() {
 
         {/* Posts List */}
         <div className="space-y-3">
-          {posts.length === 0 ? (
+          {!posts || posts.length === 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

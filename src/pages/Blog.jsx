@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import ArticleCard from '../components/cms/ArticleCard';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useFetchApi } from '../hooks/useFetchApi';
 
 export default function Blog() {
-  const [datas, setData] = useState(null);
-  
   const navigate = useNavigate();
 
   // Change parameter name to slug
@@ -14,24 +13,15 @@ export default function Blog() {
     navigate(`/blog/${slug}`); // Use slug in URL
   };
   
-  useEffect(() => {
-    const fetchData = async() => {
-      try {
-        const response = await fetch('http://localhost:1337/api/articles?populate[author][populate]=*&populate=cover');
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        console.log('Full API response:', result);
-        setData(result.data); 
-      } catch(error){
-        console.error('Error fetching articles:', error);
-      }
+  const { data: datas } = useFetchApi(
+    'http://localhost:1337/api/articles?populate[author][populate]=*&populate=cover',
+    {},
+    [],
+    (result) => {
+      console.log('Full API response:', result);
+      return result.data;
     }
-    fetchData();
-  }, []);
+  );
   
   return (  
     <motion.div
