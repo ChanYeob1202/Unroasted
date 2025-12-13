@@ -1,12 +1,22 @@
 # UnRoasted - Coffee Community Platform
 
-> **Status**: Archived / On Hold (Last Updated: [Current Date])
+> **Status**: Archived / On Hold (Last Updated: December 2024)
 > 
 > This project is currently on hold. The codebase is preserved for reference but is not actively maintained.
 
 ## 📋 Project Overview
 
 UnRoasted is a React-based coffee community platform that combines blog functionality, community features, and user management. The platform allows users to read articles, participate in a community bulletin board, and includes an admin dashboard for content management.
+
+## 📸 Screenshots
+
+| Home | Story |
+|:----:|:-----:|
+| ![Home](./public/screenshots/homepage.png) | ![Story](./public/screenshots/story.png) |
+
+| Community | Authentication |
+|:---------:|:--------------:|
+| ![Community](./public/screenshots/community.png) | ![Auth](./public/screenshots/authentication.png) |
 
 ## 🏗️ Architecture
 
@@ -19,10 +29,10 @@ UnRoasted is a React-based coffee community platform that combines blog function
 - **UI Components**: Custom components + Headless UI
 
 ### Backend Services
-- **CMS**: Strapi (localhost:1337) - Content management for blog articles
+- **CMS**: Strapi - Content management for blog articles
 - **Database**: Firebase Firestore - User data, posts, community content
 - **Authentication**: Firebase Auth
-- **Server**: Express.js (localhost:4242) - Custom API endpoints
+- **Server**: Express.js - Custom API endpoints
 
 ### Key Dependencies
 - Firebase (Authentication & Firestore)
