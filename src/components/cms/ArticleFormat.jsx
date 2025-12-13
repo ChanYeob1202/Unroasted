@@ -5,8 +5,8 @@ import { useFetchApi } from '../../hooks/useFetchApi'
 
 export default function ArticleFormat({ id }) { // 'id' is now actually a slug
     const { data: article, loading, error: fetchError } = useFetchApi(
-        id ? `http://localhost:1337/api/articles?filters[slug][$eq]=${id}&populate=*` : null,
-        {},
+      id ? `${process.env.REACT_APP_STRAPI_URL}/api/articles?filters[slug][$eq]=${id}&populate=*` : null,
+      {},
         [id],
         (data) => {
             // When filtering, Strapi returns an array
@@ -54,9 +54,9 @@ export default function ArticleFormat({ id }) { // 'id' is now actually a slug
           >
             <img 
               src={a.cover?.url 
-                ? `http://localhost:1337${a.cover.url}` 
+                ? `${process.env.REACT_APP_STRAPI_URL}${a.cover.url}` 
                 : a.cover?.data?.attributes?.url 
-                ? `http://localhost:1337${a.cover.data.attributes.url}` 
+                ? `${process.env.REACT_APP_STRAPI_URL}${a.cover.data.attributes.url}` 
                 : undefined}
               alt={a.title || "Article cover"}
               className="mb-12 rounded-lg w-80 h-80 mx-auto"

@@ -14,7 +14,7 @@ export default function Blog() {
   };
   
   const { data: datas } = useFetchApi(
-    'http://localhost:1337/api/articles?populate[author][populate]=*&populate=cover',
+    `${process.env.REACT_APP_STRAPI_URL}/api/articles?populate[author][populate]=*&populate=cover`,
     {},
     [],
     (result) => {
