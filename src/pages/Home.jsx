@@ -14,7 +14,7 @@ export default function Home() {
   const storyOpacity = useTransform(scrollYProgress, [0.3, 0.4], [1,0]);
 
   const { data: featuredArticles, loading, error } = useFetchApi(
-    'http://localhost:1337/api/articles?populate=cover&pagination[pageSize]=3&sort[0]=publishedAt:desc',
+    `${process.env.REACT_APP_STRAPI_URL}/api/articles?populate=cover&pagination[pageSize]=3&sort[0]=publishedAt:desc`,
     {},
     [],
     (result) => result.data || []

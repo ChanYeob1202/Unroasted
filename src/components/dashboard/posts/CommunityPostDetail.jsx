@@ -127,7 +127,7 @@ export default function CommunityPostDetail() {
             </div>
             <div className="flex items-center gap-2 text-slate-500 text-sm">
               <FaEye className="w-4 h-4" />
-              <span>{post.viewCount ?? 0}</span>
+              <span>{ post.viewCount ?? 0 }</span>
             </div>
             <div className="flex-1"></div>
             <button className="p-2 hover:bg-slate-100 rounded-full transition-colors">
