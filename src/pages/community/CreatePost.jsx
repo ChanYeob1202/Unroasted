@@ -7,6 +7,8 @@ import { FaPaperPlane } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
 export default function CreatePost() {
+
+  //TODOS: implmenet delete or edit button 
   
     /*
         this page is only for users  
