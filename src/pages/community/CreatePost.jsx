@@ -4,6 +4,7 @@ import { db } from '../../lib/firebase/firebase';
 import { useAuth } from '../../hooks/useAuth';
 import { motion } from 'framer-motion';
 import { FaPaperPlane } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreatePost() {
   
@@ -18,7 +19,8 @@ export default function CreatePost() {
   const [ title, setTitle ] = useState("");
   const [content, setContent ] = useState("");
   const { currentUser } = useAuth();
-  console.log(currentUser)
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,6 +46,9 @@ export default function CreatePost() {
       // clear form
       setTitle("");
       setContent("");
+      navigate("/community")
+      
+
     } catch (error){
       console.error("Error: ", error)
     }  }
