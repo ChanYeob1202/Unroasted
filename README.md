@@ -1,12 +1,119 @@
-# UnRoasted - Coffee Community Platform
+# ☕ UnRoasted - Coffee Community Platform
 
-> **Status**: Archived / On Hold (Last Updated: December 2024)
-> 
-> This project is currently on hold. The codebase is preserved for reference but is not actively maintained.
+> A full-stack community platform for coffee enthusiasts to share their journey, thoughts, and insights.
 
-## 📋 Project Overview
+**🔗 Live Demo:** [unroasted.vercel.app](https://unroasted.vercel.app)
 
-UnRoasted is a React-based coffee community platform that combines blog functionality, community features, and user management. The platform allows users to read articles, participate in a community bulletin board, and includes an admin dashboard for content management.
+---
+
+## 🎯 About This Project
+
+UnRoasted is a coffee community platform where I share my personal coffee journey and coffee lovers can connect, post their thoughts, and explore curated coffee insights. This project combines my passion for coffee with my skills in full-stack development.
+
+**Why I Built This:**
+As a coffee enthusiast, I wanted to create a space where people could share their coffee experiences authentically. This project allowed me to explore modern web technologies while building something I'm personally passionate about.
+
+---
+
+## ✨ Key Features
+
+### 🔐 **Authentication System**
+- Email/password sign up and login
+- Google OAuth integration
+- Password reset functionality
+- Protected routes with role-based access control
+
+### 💬 **Community Features**
+- User-generated posts and discussions
+- Interactive community bulletin board
+- Real-time updates with Firebase
+- User engagement (likes, comments)
+
+### 📝 **Content Management**
+- Personal coffee journey stories
+- Curated coffee insights and articles
+- Markdown support for rich content
+- Headless CMS integration with Strapi
+
+### 👨‍💼 **Admin Dashboard**
+- User management interface
+- Content moderation tools
+- Posts management
+- Role verification and access control
+
+### 🎨 **User Experience**
+- Responsive design (mobile-first)
+- Smooth animations with Framer Motion
+- Intuitive navigation
+- Clean, modern UI with Tailwind CSS
+
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+- **React 18.3.1** - UI framework
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **React Router DOM** - Navigation
+- **React Context API** - State management
+
+### **Backend & Services**
+- **Firebase Auth** - User authentication
+- **Firebase Firestore** - Real-time database
+- **Strapi CMS** - Content management
+- **Express.js** - Custom API endpoints
+
+### **Additional Libraries**
+- React Hot Toast - Notifications
+- Marked - Markdown parsing
+- Headless UI - Accessible components
+
+---
+
+## 💡 What I Learned
+
+Building UnRoasted taught me valuable lessons in full-stack development:
+
+- **Authentication & Security**: Implementing secure user authentication with Firebase Auth and managing role-based access control
+- **Database Design**: Structuring data in Firebase Firestore for optimal real-time performance
+- **State Management**: Managing complex application state across multiple components using React Context
+- **API Integration**: Working with headless CMS (Strapi) and building custom Express endpoints
+- **User Experience**: Creating smooth, responsive interfaces with Framer Motion and Tailwind CSS
+- **Deployment**: Deploying a full-stack application to production on Vercel
+
+**Biggest Challenge:** Integrating multiple backend services (Firebase, Strapi, Express) while maintaining clean architecture and good performance. I solved this by clearly separating concerns and creating modular, reusable components.
+
+---
+
+## 🚀 Running Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/ChanYeob1202/Unroasted.git
+
+# Navigate to project directory
+cd Unroasted
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+# Create .env file with your Firebase config:
+# REACT_APP_FIREBASE_API_KEY=your_key
+# REACT_APP_FIREBASE_AUTH_DOMAIN=your_domain
+# REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+# REACT_APP_FIREBASE_STORAGE_BUCKET=your_bucket
+# REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+# REACT_APP_FIREBASE_APP_ID=your_app_id
+
+# Start development server
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+---
 
 ## 📸 Screenshots
 
@@ -18,75 +125,47 @@ UnRoasted is a React-based coffee community platform that combines blog function
 |:---------:|:--------------:|
 | ![Community](./public/screenshots/community.png) | ![Auth](./public/screenshots/authentication.png) |
 
-## 🏗️ Architecture
+---
 
-### Frontend
-- **Framework**: React 18.3.1
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Routing**: React Router DOM 7.3.0
-- **State Management**: React Context API (AuthContext)
-- **UI Components**: Custom components + Headless UI
+## 🔮 Future Enhancements
 
-### Backend Services
-- **CMS**: Strapi - Content management for blog articles
-- **Database**: Firebase Firestore - User data, posts, community content
-- **Authentication**: Firebase Auth
-- **Server**: Express.js - Custom API endpoints
-
-### Key Dependencies
-- Firebase (Authentication & Firestore)
-- Strapi (Headless CMS)
-- Framer Motion (Animations)
-- React Hot Toast (Notifications)
-- Marked (Markdown parsing)
-
-## ✨ Current Features
-
-### ✅ Implemented
-1. **Homepage**
-   - Hero section with parallax effects
-   - About/Story section
-   - Blog preview section (3 latest articles)
-   - Join section
-
-2. **Blog System**
-   - Article listing page (protected route)
-   - Individual article pages with markdown support
-   - Article cards with cover images
-   - Fetches from Strapi CMS
-
-3. **Authentication**
-   - Sign in/Sign up pages
-   - Google OAuth integration
-   - Password reset functionality
-   - Protected routes
-   - Admin role verification
-
-4. **Community Features**
-   - Bulletin board (community posts)
-   - User interactions (likes, posts)
-
-5. **Admin Dashboard**
-   - User management table
-   - Posts management table
-   - Loading and error states
-   - Admin-only route protection
-
-6. **Story Page**
-   - Coffee story/education content
-
-### 🚧 Partially Implemented / Known Issues
-- Error handling: Some components only log errors to console (Home.jsx, Blog.jsx) - needs user-facing error messages
-- Loading states: Missing in some components
-- Blog content management: Requires regular Strapi updates
-- Dashboard features: Some TODOs remain (see Dashboard.todo)
-
-### ❌ Not Implemented
-- Payment integration (Stripe code exists but not fully integrated)
-- Advanced search/filtering
-- Dashboard pagination
+Ideas for future versions:
+- Advanced search and filtering
+- User profiles with coffee preferences
+- Coffee shop discovery map
+- Brewing guides and tutorials
+- Mobile app version
 - Email notifications
-- Production deployment
+- Enhanced analytics dashboard
+
+---
 
 ## 📁 Project Structure
+
+```
+Unroasted/
+├── src/
+│   ├── components/       # React components
+│   ├── contexts/         # Context providers (Auth, etc.)
+│   ├── pages/           # Page components
+│   ├── services/        # API services
+│   └── utils/           # Helper functions
+├── public/              # Static assets
+└── unRoasted/          # Additional resources
+```
+
+---
+
+## 🤝 Connect With Me
+
+Built with ❤️ and ☕ by ChanYeob
+
+- **GitHub:** [@ChanYeob1202](https://github.com/ChanYeob1202)
+- **LinkedIn:** [Your LinkedIn]
+- **Portfolio:** [Your Portfolio]
+
+---
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
