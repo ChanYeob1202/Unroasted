@@ -121,9 +121,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 |:----:|:-----:|
 | ![Home](./public/screenshots/homepage.png) | ![Story](./public/screenshots/story.png) |
 
-| Community | Authentication |
-|:---------:|:--------------:|
-| ![Community](./public/screenshots/community.png) | ![Auth](./public/screenshots/authentication.png) |
+| Blog | Community |
+|:----:|:---------:|
+| ![Blog](./public/screenshots/blog.png) | ![Community](./public/screenshots/community.png) |
+
+| Authentication |
+|:--------------:|
+| ![Auth](./public/screenshots/authentication.png) |
 
 ---
 
