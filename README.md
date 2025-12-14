@@ -99,13 +99,14 @@ cd Unroasted
 npm install
 
 # Set up environment variables
-# Create .env file with your Firebase config:
-# REACT_APP_FIREBASE_API_KEY=your_key
-# REACT_APP_FIREBASE_AUTH_DOMAIN=your_domain
-# REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-# REACT_APP_FIREBASE_STORAGE_BUCKET=your_bucket
-# REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-# REACT_APP_FIREBASE_APP_ID=your_app_id
+# Create .env file with your config:
+# REACT_APP_API_KEY=your_firebase_api_key
+# REACT_APP_AUTH_DOMAIN=your_project.firebaseapp.com
+# REACT_APP_PROJECT_ID=your_project_id
+# REACT_APP_STORAGE_BUCKET=your_project.appspot.com
+# REACT_APP_MESSAGING_SENDER_ID=your_sender_id
+# REACT_APP_APP_ID=your_app_id
+# REACT_APP_STRAPI_URL=your_strapi_url
 
 # Start development server
 npm start
@@ -149,27 +150,24 @@ Ideas for future versions:
 ```
 Unroasted/
 ├── src/
-│   ├── components/       # React components
-│   ├── contexts/         # Context providers (Auth, etc.)
-│   ├── pages/           # Page components
-│   ├── services/        # API services
-│   └── utils/           # Helper functions
-├── public/              # Static assets
-└── unRoasted/          # Additional resources
+│   ├── components/       # React components (layouts, forms, cms, etc.)
+│   ├── contexts/         # Context providers (AuthContext)
+│   ├── pages/            # Page components (Home, Blog, Community)
+│   ├── hooks/            # Custom React hooks (useAuth, useFetchApi)
+│   ├── lib/              # External service configs (Firebase)
+│   ├── ui/               # Reusable UI components
+│   └── data/             # Static data and content
+├── public/               # Static assets and images
+└── strapi/               # Strapi CMS backend
 ```
 
 ---
 
 ## 🤝 Connect With Me
 
-Built with ❤️ and ☕ by ChanYeob
+Built with ❤️ and ☕ by Michael Kim
 
 - **GitHub:** [@ChanYeob1202](https://github.com/ChanYeob1202)
-- **LinkedIn:** [Your LinkedIn]
-- **Portfolio:** [Your Portfolio]
+- **LinkedIn:** [Michael Kim](https://www.linkedin.com/in/michael-kim-3514a9314/)
+- **Portfolio:** [michaelkimdev.com](https://michaelkimdev.com/)
 
----
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
