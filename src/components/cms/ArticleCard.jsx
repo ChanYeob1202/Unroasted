@@ -42,7 +42,7 @@ export default function ArticleCard({ data, onClick }) {
         
         {coverUrl ? 
           <img 
-            src={`${process.env.REACT_APP_STRAPI_URL}${coverUrl}`} 
+          src={coverUrl.startsWith('http') ? coverUrl : `${process.env.REACT_APP_STRAPI_URL}${coverUrl}`}
             alt={a.title || data.title || 'Article cover'} 
             className="w-full h-48 object-cover rounded" 
           /> 
