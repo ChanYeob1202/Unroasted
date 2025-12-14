@@ -3,6 +3,12 @@ import { motion } from 'framer-motion'
 import { marked } from 'marked'
 import { useFetchApi } from '../../hooks/useFetchApi'
 
+
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+})
+
 export default function ArticleFormat({ id }) { // 'id' is now actually a slug
     const { data: article, loading, error: fetchError } = useFetchApi(
       id ? `${process.env.REACT_APP_STRAPI_URL}/api/articles?filters[slug][$eq]=${id}&populate=*` : null,
@@ -52,15 +58,15 @@ export default function ArticleFormat({ id }) { // 'id' is now actually a slug
             animate={{ opacity: 1, y:0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <img 
-              src={a.cover?.url 
-                ? `${process.env.REACT_APP_STRAPI_URL}${a.cover.url}` 
-                : a.cover?.data?.attributes?.url 
-                ? `${process.env.REACT_APP_STRAPI_URL}${a.cover.data.attributes.url}` 
-                : undefined}
+          <img 
+              src={(() => {
+                const url = a.cover?.url ?? a.cover?.data?.attributes?.url;
+                if (!url) return undefined;
+                return url.startsWith('http') ? url : `${process.env.REACT_APP_STRAPI_URL}${url}`;
+              })()}
               alt={a.title || "Article cover"}
-              className="mb-12 rounded-lg w-80 h-80 mx-auto"
-            /> 
+              className="w-full max-w-2xl max-h-80 mx-auto mb-12 rounded-lg object-cover"
+            />
 
             {/* Article Title */}
           </motion.div>
@@ -100,9 +106,12 @@ export default function ArticleFormat({ id }) { // 'id' is now actually a slug
             prose-ul:text-gray-900 prose-li:mb-2
             prose-blockquote:border-l-gray-300 prose-blockquote:text-gray-700
             prose-blockquote:font-light">
-            <div 
-              dangerouslySetInnerHTML={{ __html: marked(a.blocks?.[0]?.body || '') }}
-            />
+            {a.blocks?.map((block, index) => (
+              <div 
+                key={index}
+                dangerouslySetInnerHTML={{ __html: marked(block.body || '') }}
+              />
+            ))}
           </div>
         </div>
       )}

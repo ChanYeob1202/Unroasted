@@ -129,7 +129,7 @@ export default function InputForm({
           </motion.div>
         </div>
 
-        {/* Remember me checkbox for signin */}
+        {/* Remember me checkbox for sinin */}
         {isSignIn && (
           <div className="flex items-center justify-between">
             <div className="flex items-center">
