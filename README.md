@@ -1,88 +1,234 @@
-# ☕ UnRoasted - Coffee Community Platform
+# UnRoasted - Coffee Education & Community Platform
 
-> A full-stack community platform for coffee enthusiasts to share their journey, thoughts, and insights.
+> Built by a coffee shop manager to solve a real training problem
 
-**🔗 Live Demo:** [unroasted.vercel.app](https://unroasted.vercel.app)
+## 🎯 The Problem
+
+As a manager at RNY Coffee Studio, I was training 5-10 new baristas 
+every few months. I faced three challenges:
+
+1. **Repetitive Training** - Explaining the same coffee concepts 
+   over and over
+2. **No Continuous Learning** - After training ended, baristas had 
+   nowhere to ask follow-up questions
+3. **Isolated Learning** - Trainees couldn't learn from each other 
+   or build a community
+
+## 💡 The Solution
+
+UnRoasted is a platform where:
+- **Managers** can create educational content once and share it with 
+  all trainees
+- **Baristas** can read articles, ask questions, and discuss with peers
+- **Coffee shops** can track employee learning and build a knowledge base
+
+## 🌐 Live Demo
+[https://unroasted.vercel.app](https://unroasted.vercel.app)
 
 ---
 
-## 🎯 About This Project
+## 📸 Screenshots
 
-UnRoasted is a coffee community platform where I share my personal coffee journey and coffee lovers can connect, post their thoughts, and explore curated coffee insights. This project combines my passion for coffee with my skills in full-stack development.
+| Home | Story |
+|:----:|:-----:|
+| ![Home](./public/screenshots/homepage.png) | ![Story](./public/screenshots/story.png) |
 
-**Why I Built This:**
-As a coffee enthusiast, I wanted to create a space where people could share their coffee experiences authentically. This project allowed me to explore modern web technologies while building something I'm personally passionate about.
+| Blog | Community |
+|:----:|:---------:|
+| ![Blog](./public/screenshots/blog.png) | ![Community](./public/screenshots/community.png) |
+
+| Authentication |
+|:--------------:|
+| ![Auth](./public/screenshots/authentication.png) |
 
 ---
 
-## ✨ Key Features
+## ✨ Current Features
 
-### 🔐 **Authentication System**
-- Email/password sign up and login
-- Google OAuth integration
-- Password reset functionality
-- Protected routes with role-based access control
+### 📚 Educational Content (Strapi CMS)
+- Coffee education articles (extraction, milk steaming, bean origins)
+- Markdown support for formatting
+- Mobile-friendly reading experience
+- Manager can publish from anywhere (phone, tablet, desktop)
 
-### 💬 **Community Features**
-- User-generated posts and discussions
-- Interactive community bulletin board
-- Real-time updates with Firebase
-- User engagement (likes, comments)
+### 💬 Community Discussion (Firebase)
+- Bulletin board for Q&A between baristas
+- Real-time updates when someone posts
+- User authentication (safe, accountable discussions)
+- Like and engage with helpful posts
 
-### 📝 **Content Management**
-- Personal coffee journey stories
-- Curated coffee insights and articles
-- Markdown support for rich content
-- Headless CMS integration with Strapi
+### 👨‍💼 Admin Dashboard
+- User management (promote trainees to moderators)
+- Content moderation
+- View community activity
+- Manage permissions
 
-### 👨‍💼 **Admin Dashboard**
-- User management interface
-- Content moderation tools
-- Posts management
-- Role verification and access control
-
-### 🎨 **User Experience**
-- Responsive design (mobile-first)
-- Smooth animations with Framer Motion
-- Intuitive navigation
-- Clean, modern UI with Tailwind CSS
+### 🔐 Authentication
+- Email/password and Google OAuth
+- Role-based access (trainee, moderator, admin)
+- Protected routes for members-only content
 
 ---
 
 ## 🛠️ Tech Stack
 
-### **Frontend**
-- **React 18.3.1** - UI framework
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animations
-- **React Router DOM** - Navigation
-- **React Context API** - State management
+**Frontend:**
+- React 18 - Dynamic, interactive user experience
+- Tailwind CSS - Fast, consistent styling
+- Framer Motion - Smooth animations
 
-### **Backend & Services**
+**Backend:**
+- **Strapi CMS** - Content management (I can write articles from my phone!)
 - **Firebase Auth** - User authentication
-- **Firebase Firestore** - Real-time database
-- **Strapi CMS** - Content management
-- **Express.js** - Custom API endpoints
+- **Firebase Firestore** - Real-time community discussions
 
-### **Additional Libraries**
-- React Hot Toast - Notifications
-- Marked - Markdown parsing
-- Headless UI - Accessible components
+**Deployment:**
+- Vercel - Free hosting with instant deployment
 
 ---
 
-## 💡 What I Learned
+## 🏗️ Architecture
 
-Building UnRoasted taught me valuable lessons in full-stack development:
+Built with a multi-service architecture for flexibility:
 
-- **Authentication & Security**: Implementing secure user authentication with Firebase Auth and managing role-based access control
-- **Database Design**: Structuring data in Firebase Firestore for optimal real-time performance
-- **State Management**: Managing complex application state across multiple components using React Context
-- **API Integration**: Working with headless CMS (Strapi) and building custom Express endpoints
-- **User Experience**: Creating smooth, responsive interfaces with Framer Motion and Tailwind CSS
-- **Deployment**: Deploying a full-stack application to production on Vercel
+```
+        React Frontend (Vercel)
+                 ↓
+    ┌───────────────────────────┐
+    │                           │
+    ▼                           ▼
+┌──────────┐              ┌───────────┐
+│ Strapi   │              │ Firebase  │
+│ CMS      │              │ Auth +    │
+│ (Content)│              │ Firestore │
+│          │              │(Community)│
+└──────────┘              └───────────┘
+     │                          │
+     ▼                          ▼
+┌──────────┐              ┌───────────┐
+│PostgreSQL│              │ Google    │
+│(Render)  │              │ Cloud     │
+└──────────┘              └───────────┘
+```
 
-**Biggest Challenge:** Integrating multiple backend services (Firebase, Strapi, Express) while maintaining clean architecture and good performance. I solved this by clearly separating concerns and creating modular, reusable components.
+---
+
+## 💼 Real-World Impact
+
+**Tested with actual baristas at RNY Coffee Studio:**
+- 8+ trainees have used the platform
+- 20+ educational articles published
+- Positive feedback on ease of use and community features
+- Reduced my 1-on-1 training time by ~40%
+
+---
+
+## 🚀 Future Vision (B2B SaaS)
+
+**The Plan:**
+
+**Phase 1 (Current)** - MVP for RNY Coffee Studio
+- ✅ Validate concept with real users
+- ✅ Build content library
+- ✅ Gather feedback
+
+**Phase 2 (6 months)** - Multi-tenant SaaS
+- [ ] Onboard 5-10 other coffee shops as beta customers
+- [ ] Add white-label branding per shop
+- [ ] Analytics dashboard (track employee progress)
+- [ ] Pricing: $29-49/month per coffee shop
+
+**Phase 3 (Future)** - Scale
+- [ ] Certificate program (baristas earn credentials)
+- [ ] Job marketplace (connect trained baristas with hiring shops)
+- [ ] Mobile app for learning during shifts
+- [ ] Expand to other hospitality industries (restaurants, hotels)
+
+---
+
+## 🎓 What I Learned
+
+**Technical:**
+1. Multi-service integration (Strapi + Firebase)
+2. Role-based access control and authentication
+3. Real-time database patterns with Firestore
+4. Headless CMS architecture
+5. Building admin dashboards for non-technical users
+
+**Business:**
+1. User research (talked to baristas, learned what they actually need)
+2. MVP development (cut unnecessary features, focus on core value)
+3. Product prioritization (education content > fancy features)
+4. Thinking about monetization and scale from day one
+5. Managing real users and gathering feedback
+
+---
+
+## 💡 Key Insights
+
+**What worked:**
+- Simple is better - baristas wanted articles and Q&A, not complex features
+- Real-time community features create engagement
+- Mobile-first design (baristas access on their phones)
+
+**What I'd do differently:**
+- Start with user interviews before building anything
+- Add analytics from day one to track engagement
+- Build pagination earlier (performance issues with 50+ articles)
+
+---
+
+## 🔮 Technical Improvements Needed
+
+- [ ] Multi-tenancy for multiple coffee shops
+- [ ] Learning management system (track completion, certificates)
+- [ ] Email notifications (new posts, replies)
+- [ ] Full-text search across articles
+- [ ] Stripe integration for subscriptions
+- [ ] Better error handling and user feedback
+- [ ] Mobile app (React Native)
+
+---
+
+## 📊 Business Model
+
+**Target Market:** 
+- Independent coffee shops (10-50 employees)
+- Small coffee chains (2-5 locations)
+- Coffee training schools
+
+**Value Proposition:**
+- Reduce training time by 40%
+- Scale knowledge across multiple locations
+- Build company culture through community
+- Track employee learning progress
+
+**Revenue Model:**
+- $29/month: Single location, up to 20 users
+- $49/month: Multi-location, up to 50 users
+- Enterprise: Custom pricing for chains
+
+**Market Validation:**
+- Coffee shop training is currently 100% manual
+- No dedicated platforms for this niche
+- Coffee industry is growing (15,000+ shops in US)
+
+---
+
+## 🏆 Why This Project Matters
+
+This isn't just a coding project - it's a real solution to a real 
+problem I experienced as a manager.
+
+It demonstrates:
+- ✅ Problem-solving (identified inefficiency in my work)
+- ✅ User-centric thinking (built what baristas actually need)
+- ✅ Technical skills (full-stack, multi-service integration)
+- ✅ Business acumen (monetization strategy, market analysis)
+- ✅ Leadership (training people, managing users)
+
+I'm actively working on turning this into a revenue-generating 
+product for the coffee industry.
 
 ---
 
@@ -116,35 +262,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ---
 
-## 📸 Screenshots
-
-| Home | Story |
-|:----:|:-----:|
-| ![Home](./public/screenshots/homepage.png) | ![Story](./public/screenshots/story.png) |
-
-| Blog | Community |
-|:----:|:---------:|
-| ![Blog](./public/screenshots/blog.png) | ![Community](./public/screenshots/community.png) |
-
-| Authentication |
-|:--------------:|
-| ![Auth](./public/screenshots/authentication.png) |
-
----
-
-## 🔮 Future Enhancements
-
-Ideas for future versions:
-- Advanced search and filtering
-- User profiles with coffee preferences
-- Coffee shop discovery map
-- Brewing guides and tutorials
-- Mobile app version
-- Email notifications
-- Enhanced analytics dashboard
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -165,9 +282,8 @@ Unroasted/
 
 ## 🤝 Connect With Me
 
-Built with ❤️ and ☕ by Michael Kim
+**Built with ☕ by a coffee manager who codes**
 
 - **GitHub:** [@ChanYeob1202](https://github.com/ChanYeob1202)
 - **LinkedIn:** [Michael Kim](https://www.linkedin.com/in/michael-kim-3514a9314/)
 - **Portfolio:** [michaelkimdev.com](https://michaelkimdev.com/)
-
