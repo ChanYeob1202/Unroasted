@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { marked } from 'marked'
 import { useFetchApi } from '../../hooks/useFetchApi'
 
-
 marked.setOptions({
   breaks: true,
   gfm: true,
