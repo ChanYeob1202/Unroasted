@@ -67,9 +67,7 @@ UnRoasted is a platform where:
 - Email/password and Google OAuth
 - Role-based access (trainee, moderator, admin)
 - Protected routes for members-only content
-
 ---
-
 ## 🛠️ Tech Stack
 
 **Frontend:**
