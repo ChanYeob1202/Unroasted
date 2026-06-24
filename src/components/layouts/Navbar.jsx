@@ -7,7 +7,7 @@ import { CiViewList } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 
 export default function Navbar() {
-  const { currentUser, logOut, isAdmin } = useAuth();
+  const { currentUser, logOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
