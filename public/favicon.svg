@@ -1,12 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Coffee cup body -->
-  <rect x="12" y="20" width="32" height="36" rx="4" fill="#6F4E37"/>
-  <!-- Cup handle -->
-  <path d="M44 28 C56 28, 56 48, 44 48" stroke="#6F4E37" stroke-width="6" fill="none"/>
-  <!-- Coffee liquid -->
-  <rect x="16" y="24" width="24" height="10" rx="2" fill="#4A3428"/>
-  <!-- Steam lines -->
-  <path d="M20 16 Q22 12, 20 8" stroke="#8B7355" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <path d="M28 14 Q30 10, 28 6" stroke="#8B7355" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <path d="M36 16 Q38 12, 36 8" stroke="#8B7355" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Brand tile -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#6F4E37"/>
+  <!-- "U" monogram for unRoasted, drawn as a stroked path -->
+  <path d="M20 16 V34 A12 12 0 0 0 44 34 V16"
+        fill="none" stroke="#F5EFE6" stroke-width="9"
+        stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
