@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Brand tile -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#6F4E37"/>
+  <!-- "U" monogram for unRoasted, drawn as a stroked path -->
+  <path d="M20 16 V34 A12 12 0 0 0 44 34 V16"
+        fill="none" stroke="#F5EFE6" stroke-width="9"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
