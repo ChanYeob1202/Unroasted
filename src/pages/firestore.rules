@@ -1,8 +1,44 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /posts/{postId} {
-      allow read, write: if true;  
+
+    function signedIn() {
+      return request.auth != null;
     }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    // Only the fields in `keys` changed in this update
+    function onlyChanged(keys) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys);
+    }
+
+    // User profiles: private to their owner (they contain emails).
+    // `role` decides admin access in AuthContext, so users can never set it themselves.
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid)
+                    && request.resource.data.role == 'user'
+                    && request.resource.data.get('purchases', []).size() == 0;
+      // The app never edits profiles after sign-up; open this deliberately when it does
+      allow update, delete: if false;
+    }
+
+    // Community posts: public to read, written by their author.
+    match /community_posts/{postId} {
+      allow read: if true;
+      allow create: if signedIn()
+                    && request.resource.data.userId == request.auth.uid;
+      allow update: if (isOwner(resource.data.userId)
+                        && request.resource.data.userId == resource.data.userId)
+                    // any visitor may bump the view counter by exactly 1 (CommunityPostDetail.jsx)
+                    || (onlyChanged(['viewCount'])
+                        && request.resource.data.viewCount == resource.data.get('viewCount', 0) + 1);
+      allow delete: if isOwner(resource.data.userId);
+    }
+
+    // Everything else (including the unused legacy `posts` collection) is closed.
   }
 }
